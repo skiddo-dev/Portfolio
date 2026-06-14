@@ -260,12 +260,28 @@
             <span class="exp-meta"><strong>Render Lab</strong><em>Hand-authored WebAssembly</em></span>
           </button>
 
-          <div class="exp exp-more reveal" aria-hidden="false">
-            <div class="exp-more-inner">
-              <strong>+ more</strong>
-              <span>Neumorphism · native-platform CSS (anchor positioning, scroll-driven, view transitions)</span>
-            </div>
-          </div>
+          <button class="exp-more reveal" type="button" id="expMore" aria-expanded="false" aria-controls="expNeu expPlatform">
+            <span class="exp-more-inner">
+              <span class="exp-more-plus" aria-hidden="true">+</span>
+              <strong>2 more explorations</strong>
+              <span class="exp-more-sub">Neumorphism &middot; native-platform CSS</span>
+              <span class="exp-more-cta"><span class="exp-more-label">Show</span> <span class="chev" aria-hidden="true">&#9662;</span></span>
+            </span>
+          </button>
+
+          <button class="exp exp-extra" type="button" id="expNeu"
+                  data-img="assets/exp-neu.jpg" data-title="Neumorphism"
+                  data-desc="Soft-UI — one monochrome surface where depth comes only from dual light/dark shadows, and controls physically press in. The dark variant comes free by re-pointing two CSS variables.">
+            <img src="assets/exp-neu.jpg" alt="Neumorphism soft-UI interface exploration" loading="lazy" decoding="async" />
+            <span class="exp-meta"><strong>Neu</strong><em>Neumorphism &middot; soft-UI</em></span>
+          </button>
+
+          <button class="exp exp-extra" type="button" id="expPlatform"
+                  data-img="assets/exp-platform.jpg" data-title="Native Platform"
+                  data-desc="The whole app rebuilt on bleeding-edge native CSS — anchor positioning, native masonry, scroll-driven carousels, and cross-document view transitions. No JS layout or animation libraries.">
+            <img src="assets/exp-platform.jpg" alt="Native-platform CSS interface exploration" loading="lazy" decoding="async" />
+            <span class="exp-meta"><strong>Platform</strong><em>Native web platform CSS</em></span>
+          </button>
         </div>
       </div>
     </section>

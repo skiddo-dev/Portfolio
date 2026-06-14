@@ -85,6 +85,22 @@
     });
   });
 
+  /* ---------- "+ more" explorations toggle ---------- */
+  var moreBtn = document.getElementById("expMore");
+  var exploreGrid = document.querySelector(".explore-grid");
+  if (moreBtn && exploreGrid) {
+    moreBtn.addEventListener("click", function () {
+      var open = exploreGrid.classList.toggle("is-open");
+      moreBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      var label = moreBtn.querySelector(".exp-more-label");
+      if (label) label.textContent = open ? "Show less" : "Show";
+      if (open) {
+        var first = document.getElementById("expNeu");
+        if (first) first.focus({ preventScroll: true });
+      }
+    });
+  }
+
   /* ---------- lightbox ---------- */
   var lb = document.getElementById("lightbox");
   var lbImg = document.getElementById("lbImg");
