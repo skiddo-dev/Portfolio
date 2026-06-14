@@ -39,7 +39,7 @@ No build step — point any static host at this folder.
 
 - Screenshots live in `assets/` (copied from `docs/portfolio-assets/`). Swap them and
   the captions in `index.html` to refresh.
-- Contact CTA points to `robert@ravesinc.com` — update in `index.html` (two `mailto:`
-  links) if needed.
+- Contact CTA points to `bob.c.bice@gmail.com` — update the `mailto:` link in
+  `index.html` if needed.
 - Honors `prefers-reduced-motion` and `prefers-color-scheme`; theme choice persists in
   `localStorage` (`bb-theme`).
