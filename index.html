@@ -59,6 +59,7 @@
       <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#blueprint">Blueprint</a>
         <a href="#explorations">Explorations</a>
+        <a href="#projects">Projects</a>
         <a href="#capabilities">Capabilities</a>
         <a href="#experience">Experience</a>
         <a href="#about">About</a>
@@ -325,6 +326,41 @@
             <img src="assets/exp-platform.jpg" alt="Native-platform CSS interface exploration" loading="lazy" decoding="async" />
             <span class="exp-meta"><strong>Platform</strong><em>Native web platform CSS</em></span>
           </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MORE PROJECTS ===================== -->
+    <section class="section section-proj" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Also in the workshop</span>
+          <h2 class="section-title">Two more, built solo.</h2>
+          <p class="section-lede">
+            Same end-to-end approach, different problems — a privacy-first finance app and a control plane for a
+            home AI rig. Both SvelteKit&nbsp;2 / Svelte&nbsp;5, both local-first.
+          </p>
+        </div>
+
+        <div class="proj-grid">
+          <article class="proj-card reveal">
+            <div class="proj-shot"><img src="assets/hearth.jpg" alt="Hearth — personal-finance dashboard with net worth, a spending donut, and category breakdown" loading="lazy" decoding="async" /></div>
+            <div class="proj-body">
+              <div class="proj-head"><span class="proj-name">Hearth</span><span class="proj-badge">Private · on-device</span></div>
+              <p class="proj-tagline">A self-hosted Mint.</p>
+              <p>Privacy-first personal finance — accounts, transactions, budgets, and net-worth analytics that never leave your network. File &amp; SimpleFIN import, money stored as integer cents, with on-GPU AI categorization on the roadmap.</p>
+              <div class="proj-tags"><span>SvelteKit 2</span><span>Svelte 5</span><span>node:sqlite</span><span>Chart.js</span><span>Docker</span><span>Tailscale</span></div>
+            </div>
+          </article>
+          <article class="proj-card reveal">
+            <div class="proj-shot"><img src="assets/lattice.jpg" alt="Lattice — local-first AI control plane routing a chat to the local model with live tokens-per-second and VRAM telemetry" loading="lazy" decoding="async" /></div>
+            <div class="proj-body">
+              <div class="proj-head"><span class="proj-name">Lattice</span><span class="proj-badge">Local-first · tailnet</span></div>
+              <p class="proj-tagline">A control plane for your own AI rig.</p>
+              <p>Routes each chat to your local model (Ollama / LM Studio) when the rig is up and falls back to the cloud when it isn't — streaming the reply and showing which backend answered, tokens/sec, time-to-first-token, and live VRAM.</p>
+              <div class="proj-tags"><span>SvelteKit 2</span><span>Svelte 5</span><span>Ollama</span><span>SSE streaming</span><span>Tailscale</span></div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
