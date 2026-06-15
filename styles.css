@@ -310,6 +310,9 @@ html[data-theme="dark"] .exp-more-cta { color: #c7d2fe; }
 .footer { border-top: 1px solid var(--border); padding: 30px 0; }
 .footer-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; justify-content: space-between; }
 .footer-brand { font-family: var(--font-display); font-weight: 800; }
+.footer-social { display: inline-flex; gap: 8px; }
+.footer-social a { display: grid; place-items: center; width: 36px; height: 36px; border-radius: var(--pill); border: 1px solid var(--border-strong); color: var(--text); background: var(--surface); transition: transform var(--speed), color var(--speed), border-color var(--speed); }
+.footer-social a:hover { transform: translateY(-2px); color: var(--primary); border-color: var(--primary); }
 .footer-meta { color: var(--muted); font-size: 13.5px; }
 .footer-top { color: var(--muted); font-size: 14px; font-weight: 600; }
 .footer-top:hover { color: var(--primary); }
