@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#work">Skip to work</a>
+  <a class="skip-link" href="#blueprint">Skip to content</a>
 
   <!-- ===================== NAV ===================== -->
   <header class="nav" id="top">
@@ -56,11 +56,11 @@
         <span class="brand-name">Bob&nbsp;Bice</span>
       </a>
 
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#work">Work</a>
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#blueprint">Blueprint</a>
         <a href="#explorations">Explorations</a>
         <a href="#capabilities">Capabilities</a>
+        <a href="#experience">Experience</a>
         <a href="#about">About</a>
       </nav>
 
@@ -70,6 +70,9 @@
           <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
         </button>
         <a class="btn btn-primary nav-cta" href="#contact">Get in touch</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
       </div>
     </div>
   </header>
@@ -91,8 +94,7 @@
         </h1>
         <p class="hero-sub reveal">
           From design tokens and accessibility gates to MongoDB, native iOS, and hand-authored WebAssembly —
-          I take products from blank page to production. Below: a flagship platform, a dozen
-          interface worlds built on the same real data, and the craft behind them.
+          I take products from blank page to production, design through deploy.
         </p>
         <div class="hero-cta reveal">
           <a class="btn btn-primary" href="#blueprint">See the flagship<span class="arrow">→</span></a>
@@ -104,21 +106,6 @@
           <div class="stat" role="listitem"><span class="stat-num" data-count="12">12</span><span class="stat-label">interface explorations</span></div>
           <div class="stat" role="listitem"><span class="stat-num" data-count="560" data-suffix="+">560+</span><span class="stat-label">automated tests</span></div>
           <div class="stat" role="listitem"><span class="stat-num stat-text">Web&nbsp;+&nbsp;iOS</span><span class="stat-label">shipped to both</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== WORK / FLAGSHIP INTRO ===================== -->
-    <section class="section" id="work">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Selected work</span>
-          <h2 class="section-title">A flagship, and the range around it.</h2>
-          <p class="section-lede">
-            My main case study is <strong>Blueprint</strong> — a complete field-service platform I designed and
-            built solo. Around it sits a body of interface experiments that prove the same product can become
-            a dozen different worlds without changing a single row of data.
-          </p>
         </div>
       </div>
     </section>
@@ -141,13 +128,21 @@
           </div>
         </div>
 
-        <p class="bp-intro reveal">
-          Blueprint runs a fixtures-and-construction shop end-to-end: warehouse <strong>prospecting</strong> →
-          <strong>quotes</strong> → a field <strong>Kanban</strong> for every store buildout →
-          full double-entry <strong>books</strong> → forecasting. Email and attachments parse straight onto
-          cards via AI; the whole thing is themeable, keyboard-driven, and gated by a WCAG contrast check in CI.
-          One designer-engineer, design through deploy.
-        </p>
+        <!-- Challenge / Approach / Outcome -->
+        <div class="bp-cao reveal">
+          <div class="cao">
+            <span class="cao-k">Challenge</span>
+            <p>A fixtures-and-construction shop ran quoting, field work, and the books across disconnected spreadsheets, email, and QuickBooks — no single view from lead to ledger.</p>
+          </div>
+          <div class="cao">
+            <span class="cao-k">Approach</span>
+            <p>One platform spanning the whole job lifecycle — prospecting → quotes → a field Kanban → double-entry books → forecasting — designed and built solo on a token-driven, accessible design system, web and native iOS.</p>
+          </div>
+          <div class="cao">
+            <span class="cao-k">Outcome</span>
+            <p>A single source of truth where email and receipts parse onto cards via AI. Live in production on Azure, backed by 560+ automated tests and a WCAG contrast gate enforced in CI.</p>
+          </div>
+        </div>
 
         <!-- Showcase: board screenshot with light/dark toggle -->
         <figure class="bp-showcase reveal">
@@ -255,26 +250,26 @@
           <span class="kicker">Interface explorations</span>
           <h2 class="section-title">Same app. A dozen worlds.</h2>
           <p class="section-lede">
-            Each of these is the <em>entire</em> Blueprint app — same routes, same real data vocabulary — reskinned into a
-            distinct design language to push on motion, depth, type, and platform CSS. Built to explore range,
-            scoped so they never touch the production design system or its contrast gate.
+            Each of these is the <em>entire</em> Blueprint app — same routes, same real data — reskinned into a
+            distinct design language to push on motion, depth, type, and platform CSS. Svelte-scoped, so they never
+            touch the production design system or its contrast gate.
           </p>
         </div>
 
         <div class="explore-grid">
+          <button class="exp reveal" type="button" data-img="assets/exp-cobe.jpg" data-title="Cobe — the globe" data-desc="A hand-rolled WebGL globe that plots every store you touch as points of light — Bloomfield Hills HQ out to every reset in the network, no map library.">
+            <img src="assets/exp-cobe.jpg" alt="Hand-rolled WebGL globe interface exploration" loading="lazy" decoding="async" />
+            <span class="exp-meta"><strong>Cobe</strong><em>Hand-rolled WebGL globe</em></span>
+          </button>
+
           <button class="exp reveal" type="button" data-img="assets/exp-glass.jpg" data-title="Glassmorphism" data-desc="Frosted panels floating on a living gradient, with spring micro-interactions and a glass command dock.">
             <img src="assets/exp-glass.jpg" alt="Glassmorphism interface exploration" loading="lazy" decoding="async" />
             <span class="exp-meta"><strong>Glass</strong><em>Glassmorphism · micro-interactions</em></span>
           </button>
 
-          <button class="exp reveal" type="button" data-img="assets/exp-lab.jpg" data-title="Lab — Ambient / Spatial" data-desc="Aurora layers, spatial depth, and pointer-driven parallax — a calm, atmospheric reimagining.">
-            <img src="assets/exp-lab.jpg" alt="Ambient spatial interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Lab</strong><em>Ambient · spatial</em></span>
-          </button>
-
-          <button class="exp reveal" type="button" data-img="assets/exp-brutal.jpg" data-title="Neobrutalism" data-desc="Hard edges, raw monospace type, and unapologetic contrast — productized into a usable six-page app.">
-            <img src="assets/exp-brutal.jpg" alt="Neobrutalism interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Brutal</strong><em>Neobrutalism</em></span>
+          <button class="exp reveal" type="button" data-img="assets/exp-spatial.jpg" data-title="Spatial" data-desc="Native-CSS 3D depth — the board, books, quotes, and prospects float on a z-axis and tilt under your pointer. The whole operation, arranged in space.">
+            <img src="assets/exp-spatial.jpg" alt="Spatial pointer-tilt CSS 3D interface exploration" loading="lazy" decoding="async" />
+            <span class="exp-meta"><strong>Spatial</strong><em>Pointer-tilt · CSS 3D</em></span>
           </button>
 
           <button class="exp reveal" type="button" data-img="assets/exp-retro.jpg" data-title="Retrofuturism" data-desc="Synthwave sunset, a perspective neon grid, CRT scanlines, and chrome HUD type — an outrun control deck.">
@@ -287,21 +282,6 @@
             <span class="exp-meta"><strong>Maximalism</strong><em>Gilded salon</em></span>
           </button>
 
-          <button class="exp reveal" type="button" data-img="assets/exp-pulse.jpg" data-title="Pulse" data-desc="A neon command rail with a radial warp overlay, full keyboard navigation, and five swappable live palettes.">
-            <img src="assets/exp-pulse.jpg" alt="Neon command-rail interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Pulse</strong><em>Command rail · palettes</em></span>
-          </button>
-
-          <button class="exp reveal" type="button" data-img="assets/exp-cobe.jpg" data-title="Cobe — the globe" data-desc="A hand-rolled WebGL globe that plots every store you touch as points of light — Bloomfield Hills HQ out to every reset in the network, no map library.">
-            <img src="assets/exp-cobe.jpg" alt="Hand-rolled WebGL globe interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Cobe</strong><em>Hand-rolled WebGL globe</em></span>
-          </button>
-
-          <button class="exp reveal" type="button" data-img="assets/exp-spatial.jpg" data-title="Spatial" data-desc="Native-CSS 3D depth — the board, books, quotes, and prospects float on a z-axis and tilt under your pointer. The whole operation, arranged in space.">
-            <img src="assets/exp-spatial.jpg" alt="Spatial pointer-tilt CSS 3D interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Spatial</strong><em>Pointer-tilt · CSS 3D</em></span>
-          </button>
-
           <button class="exp reveal" type="button" data-img="assets/exp-foxes.jpg" data-title="Foxes — Field Fables" data-desc="An editorial &quot;field fable&quot; — cream-and-ink magazine typography chaptered like an issue, with a pixel-fox mascot keeping the whole yard in its eye.">
             <img src="assets/exp-foxes.jpg" alt="Editorial pixel-fox themed interface exploration" loading="lazy" decoding="async" />
             <span class="exp-meta"><strong>Foxes</strong><em>Editorial · pixel-fox</em></span>
@@ -312,25 +292,36 @@
             <span class="exp-meta"><strong>Render Lab</strong><em>Hand-authored WebAssembly</em></span>
           </button>
 
-          <button class="exp-more reveal" type="button" id="expMore" aria-expanded="false" aria-controls="expNeu expPlatform">
+          <button class="exp-more reveal" type="button" id="expMore" aria-expanded="false" aria-controls="expLab expBrutal expPulse expNeu expPlatform">
             <span class="exp-more-inner">
               <span class="exp-more-plus" aria-hidden="true">+</span>
-              <strong>2 more explorations</strong>
-              <span class="exp-more-sub">Neumorphism &middot; native-platform CSS</span>
+              <strong>5 more explorations</strong>
+              <span class="exp-more-sub">Lab &middot; Brutal &middot; Pulse &middot; Neu &middot; Platform</span>
               <span class="exp-more-cta"><span class="exp-more-label">Show</span> <span class="chev" aria-hidden="true">&#9662;</span></span>
             </span>
           </button>
 
-          <button class="exp exp-extra" type="button" id="expNeu"
-                  data-img="assets/exp-neu.jpg" data-title="Neumorphism"
-                  data-desc="Soft-UI — one monochrome surface where depth comes only from dual light/dark shadows, and controls physically press in. The dark variant comes free by re-pointing two CSS variables.">
+          <button class="exp exp-extra" type="button" id="expLab" data-img="assets/exp-lab.jpg" data-title="Lab — Ambient / Spatial" data-desc="Aurora layers, spatial depth, and pointer-driven parallax — a calm, atmospheric reimagining.">
+            <img src="assets/exp-lab.jpg" alt="Ambient spatial interface exploration" loading="lazy" decoding="async" />
+            <span class="exp-meta"><strong>Lab</strong><em>Ambient · spatial</em></span>
+          </button>
+
+          <button class="exp exp-extra" type="button" id="expBrutal" data-img="assets/exp-brutal.jpg" data-title="Neobrutalism" data-desc="Hard edges, raw monospace type, and unapologetic contrast — productized into a usable six-page app.">
+            <img src="assets/exp-brutal.jpg" alt="Neobrutalism interface exploration" loading="lazy" decoding="async" />
+            <span class="exp-meta"><strong>Brutal</strong><em>Neobrutalism</em></span>
+          </button>
+
+          <button class="exp exp-extra" type="button" id="expPulse" data-img="assets/exp-pulse.jpg" data-title="Pulse" data-desc="A neon command rail with a radial warp overlay, full keyboard navigation, and five swappable live palettes.">
+            <img src="assets/exp-pulse.jpg" alt="Neon command-rail interface exploration" loading="lazy" decoding="async" />
+            <span class="exp-meta"><strong>Pulse</strong><em>Command rail · palettes</em></span>
+          </button>
+
+          <button class="exp exp-extra" type="button" id="expNeu" data-img="assets/exp-neu.jpg" data-title="Neumorphism" data-desc="Soft-UI — one monochrome surface where depth comes only from dual light/dark shadows, and controls physically press in. The dark variant comes free by re-pointing two CSS variables.">
             <img src="assets/exp-neu.jpg" alt="Neumorphism soft-UI interface exploration" loading="lazy" decoding="async" />
             <span class="exp-meta"><strong>Neu</strong><em>Neumorphism &middot; soft-UI</em></span>
           </button>
 
-          <button class="exp exp-extra" type="button" id="expPlatform"
-                  data-img="assets/exp-platform.jpg" data-title="Native Platform"
-                  data-desc="The whole app rebuilt on bleeding-edge native CSS — anchor positioning, native masonry, scroll-driven carousels, and cross-document view transitions. No JS layout or animation libraries.">
+          <button class="exp exp-extra" type="button" id="expPlatform" data-img="assets/exp-platform.jpg" data-title="Native Platform" data-desc="The whole app rebuilt on bleeding-edge native CSS — anchor positioning, native masonry, scroll-driven carousels, and cross-document view transitions. No JS layout or animation libraries.">
             <img src="assets/exp-platform.jpg" alt="Native-platform CSS interface exploration" loading="lazy" decoding="async" />
             <span class="exp-meta"><strong>Platform</strong><em>Native web platform CSS</em></span>
           </button>
@@ -384,44 +375,82 @@
       </div>
     </section>
 
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section class="section section-xp" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Track record</span>
+          <h2 class="section-title">A decade shipping software in production.</h2>
+          <p class="section-lede">
+            Blueprint is the showcase; this is the day job. Ten years as a business analyst and developer turning
+            legacy systems into modern tools at some of the largest names in mortgage &amp; title.
+          </p>
+        </div>
+
+        <div class="xp-list">
+          <div class="xp reveal">
+            <div class="xp-when">2024 – 2026</div>
+            <div class="xp-body">
+              <h3>Business Analyst III <span class="xp-co">· United Wholesale Mortgage</span></h3>
+              <p>Automated SQL reporting for a <strong>15% lift</strong> in workflow efficiency and shipped a stakeholder-driven workflow system that raised engagement <strong>25%</strong>; helped stand up an enterprise AI-chatbot integration.</p>
+            </div>
+          </div>
+          <div class="xp reveal">
+            <div class="xp-when">2022 – 2024</div>
+            <div class="xp-body">
+              <h3>Consultant <span class="xp-co">· Neteffects, Inc.</span></h3>
+              <p>Deprecated a legacy data-orchestration tool and validated gRPC message flows with Postman — halving response time and raising system throughput <strong>200%</strong>.</p>
+            </div>
+          </div>
+          <div class="xp reveal">
+            <div class="xp-when">2020 – 2022</div>
+            <div class="xp-body">
+              <h3>Senior IT Business Analyst <span class="xp-co">· Rocket Companies — Amrock</span></h3>
+              <p>Principal analyst migrating a loan-origination platform processing <strong>$100B+ annually</strong> from legacy WPF to a cloud-native MS-SQL + Angular stack — CI/CD on Azure DevOps with Kubernetes and Docker, a zero-sync-issue migration across 100M+ records.</p>
+            </div>
+          </div>
+          <div class="xp reveal">
+            <div class="xp-when">2013 – 2020</div>
+            <div class="xp-body">
+              <h3>IT Team Leader, Scrum Master &amp; Analyst <span class="xp-co">· Rocket Companies — Amrock</span></h3>
+              <p>Led a special-project team that cut appraisal turn-time <strong>95%</strong>; automated a check-refund process saving <strong>~$1M</strong> and three months; ran SAFe ceremonies and an SSO + cloud rollout on AWS/.NET.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="xp-foot reveal">Full history on the <a href="Bob-Bice-Resume.pdf" download>résumé</a> and <a href="https://www.linkedin.com/in/bob-bice/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+      </div>
+    </section>
+
     <!-- ===================== ABOUT ===================== -->
     <section class="section section-about" id="about">
       <div class="container about-inner">
-        <figure class="about-photo reveal">
-          <img src="assets/about-bob.jpg"
-               alt="Bob Bice on a blue pedestrian bridge with his Shiba Inu on a leash"
-               loading="lazy" decoding="async" />
-          <figcaption>Out for a walk with my Shiba Inu and lead morale officer.</figcaption>
-        </figure>
-
-        <div class="about-main">
-          <div class="about-copy reveal">
-            <span class="kicker">About</span>
-            <h2 class="section-title">Hi, I'm Bob.</h2>
-            <p>
-              I'm a product designer and engineer who likes owning the whole thing — the look, the build, and the
-              ship. I care about interfaces that feel calm and obvious, code that holds up in production, and the
-              details most people only notice when they're missing: keyboard paths, empty states, honest forms,
-              a download that isn't 0 bytes.
-            </p>
-            <p>
-              Blueprint is where most of that lives right now: a real platform serving a real construction business,
-              built and maintained solo from design tokens to Azure deploys. The explorations are where I keep the
-              craft sharp.
-            </p>
-          </div>
-          <aside class="about-card reveal">
-            <h3>At a glance</h3>
-            <ul class="about-list">
-              <li><span>Role</span><strong>Designer + Engineer</strong></li>
-              <li><span>Discipline</span><strong>Design → Deploy, solo</strong></li>
-              <li><span>Focus</span><strong>Field-service SaaS</strong></li>
-              <li><span>Based in</span><strong>Metro Detroit, MI</strong></li>
-              <li><span>Platforms</span><strong>Web &amp; native iOS</strong></li>
-              <li><span>Currently</span><strong>Building Blueprint</strong></li>
-            </ul>
-          </aside>
+        <div class="about-copy reveal">
+          <span class="kicker">About</span>
+          <h2 class="section-title">Hi, I'm Bob.</h2>
+          <p>
+            I'm a business analyst and engineer who likes owning the whole thing — the look, the build, and the
+            ship. Ten years turning bloated legacy systems into modern tools taught me to care about the details
+            most people only notice when they're missing: keyboard paths, empty states, honest forms, a download
+            that isn't 0 bytes.
+          </p>
+          <p>
+            By day I've been a senior analyst and developer in mortgage &amp; title; on my own time I designed and
+            built <strong>Blueprint</strong> end-to-end — design tokens to Azure deploys — plus a dozen interface
+            explorations to keep the craft sharp.
+          </p>
         </div>
+        <aside class="about-card reveal">
+          <h3>At a glance</h3>
+          <ul class="about-list">
+            <li><span>Role</span><strong>Analyst · Engineer · Designer</strong></li>
+            <li><span>Experience</span><strong>10 years in production</strong></li>
+            <li><span>Discipline</span><strong>Design → Deploy, solo</strong></li>
+            <li><span>Based in</span><strong>Metro Detroit, MI</strong></li>
+            <li><span>Platforms</span><strong>Web &amp; native iOS</strong></li>
+            <li><span>Currently</span><strong>Building Blueprint</strong></li>
+          </ul>
+        </aside>
       </div>
     </section>
 
@@ -444,7 +473,6 @@
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 5 18 5c.6 1.7.2 3 .1 3.3.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.3v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
             GitHub
           </a>
-          <a class="btn btn-ghost btn-lg" href="#blueprint">Revisit the flagship</a>
         </div>
       </div>
     </section>

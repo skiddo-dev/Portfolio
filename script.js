@@ -26,6 +26,25 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  /* ---------- mobile menu (hamburger) ---------- */
+  var navToggle = document.getElementById("navToggle");
+  if (navToggle && nav) {
+    var closeMenu = function () {
+      nav.classList.remove("menu-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    };
+    navToggle.addEventListener("click", function () {
+      var open = nav.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.querySelectorAll("#navLinks a").forEach(function (a) {
+      a.addEventListener("click", closeMenu);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
+
   /* ---------- scroll reveal ---------- */
   var revealEls = document.querySelectorAll(".reveal");
   if (reduceMotion || !("IntersectionObserver" in window)) {
@@ -95,7 +114,7 @@
       var label = moreBtn.querySelector(".exp-more-label");
       if (label) label.textContent = open ? "Show less" : "Show";
       if (open) {
-        var first = document.getElementById("expNeu");
+        var first = exploreGrid.querySelector(".exp-extra");
         if (first) first.focus({ preventScroll: true });
       }
     });
