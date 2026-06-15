@@ -238,6 +238,17 @@ html[data-theme="dark"] .module-ic { color: #c7d2fe; }
 .bp-gcard img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border-bottom: 1px solid var(--border); }
 .bp-gcard figcaption { padding: 13px 16px; font-size: 13.5px; color: var(--muted); font-weight: 500; }
 
+/* native iOS showcase */
+.ios-showcase { margin-top: 66px; }
+.ios-head { max-width: 640px; margin: 0 auto 34px; text-align: center; }
+.ios-title { font-size: clamp(24px, 3.4vw, 36px); font-weight: 800; margin-bottom: 12px; }
+.ios-head p { color: var(--muted); font-size: 16px; }
+.ios-phones { display: flex; gap: clamp(12px, 2vw, 24px); justify-content: flex-start; overflow-x: auto; padding: 6px 2px 16px; scroll-snap-type: x proximity; }
+.phone { margin: 0; flex: 0 0 auto; width: clamp(150px, 17vw, 196px); border-radius: 26px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-elev); box-shadow: var(--shadow-lg); scroll-snap-align: center; transition: transform var(--speed); }
+.phone:hover { transform: translateY(-6px); }
+.phone img { display: block; width: 100%; height: auto; }
+@media (min-width: 900px) { .ios-phones { justify-content: center; } }
+
 /* ---------- explorations ---------- */
 .explore-grid { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .exp { position: relative; padding: 0; margin: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; cursor: pointer; background: var(--bg-elev); box-shadow: var(--shadow-sm); text-align: left; transition: transform var(--speed), box-shadow var(--speed), border-color var(--speed); }
