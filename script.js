@@ -141,6 +141,20 @@
     if (e.key === "Escape" && lb && !lb.hidden) closeLb();
   });
 
-  /* ---------- smooth-scroll active nav (optional subtle highlight) ---------- */
-  // graceful: no-op if anchors missing
+  /* ---------- scroll-spy: highlight the nav link for the section in view ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+  var spySections = navLinks
+    .map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); })
+    .filter(Boolean);
+  if (spySections.length && "IntersectionObserver" in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var id = "#" + e.target.id;
+          navLinks.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === id); });
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    spySections.forEach(function (s) { spy.observe(s); });
+  }
 })();

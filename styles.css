@@ -142,6 +142,8 @@ html[data-theme="dark"] .btn-ghost:hover { color: var(--primary); }
   padding: 8px 13px; border-radius: var(--pill); transition: color var(--speed), background var(--speed);
 }
 .nav-links a:hover { color: var(--text); background: var(--surface-2); }
+.nav-links a.active { color: var(--primary-dark); background: color-mix(in srgb, var(--primary) 12%, transparent); }
+html[data-theme="dark"] .nav-links a.active { color: #c7d2fe; }
 
 .nav-actions { display: flex; align-items: center; gap: 12px; }
 .theme-toggle {
@@ -179,6 +181,13 @@ html[data-theme="dark"] .blob { mix-blend-mode: screen; }
   padding: 6px 14px; border-radius: var(--pill); margin-bottom: 22px;
 }
 html[data-theme="dark"] .eyebrow { color: #c7d2fe; }
+
+.availability { display: inline-flex; align-items: center; gap: 9px; font-weight: 600; font-size: 13.5px; color: var(--success); background: color-mix(in srgb, var(--success-vivid, #10b981) 12%, transparent); border: 1px solid color-mix(in srgb, var(--success-vivid, #10b981) 30%, transparent); padding: 6px 14px 6px 12px; border-radius: var(--pill); margin-bottom: 18px; }
+html[data-theme="dark"] .availability { color: #6ee7b7; }
+.avail-dot { width: 9px; height: 9px; border-radius: 50%; background: #10b981; box-shadow: 0 0 0 0 rgba(16,185,129,0.6); animation: availPulse 2s ease-out infinite; }
+@keyframes availPulse { 0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.55); } 70% { box-shadow: 0 0 0 7px rgba(16,185,129,0); } 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); } }
+@media (prefers-reduced-motion: reduce) { .avail-dot { animation: none; } }
+
 .hero-title { font-size: clamp(40px, 7vw, 76px); font-weight: 800; }
 .grad { background: linear-gradient(110deg, var(--primary), var(--violet) 45%, var(--teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero-sub { margin-top: 24px; font-size: clamp(16px, 2vw, 20px); color: var(--text-2); max-width: 640px; }
