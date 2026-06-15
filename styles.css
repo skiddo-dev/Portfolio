@@ -300,10 +300,7 @@ html[data-theme="dark"] .exp-more-cta { color: #c7d2fe; }
 .stack-list li { font-size: 13px; font-weight: 600; color: var(--text-2); background: var(--surface-2); border: 1px solid var(--border); padding: 6px 12px; border-radius: var(--pill); }
 
 /* ---------- about ---------- */
-.about-inner { display: grid; grid-template-columns: minmax(280px, 360px) 1fr; gap: clamp(28px, 5vw, 52px); align-items: center; }
-.about-photo { margin: 0; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-lg); }
-.about-photo img { display: block; width: 100%; height: auto; }
-.about-main { display: flex; flex-direction: column; gap: 26px; }
+.about-inner { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
 .about-copy p { margin-top: 18px; color: var(--text-2); font-size: 17px; }
 .about-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow-md); }
 .about-card h3 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
@@ -385,7 +382,6 @@ html[data-theme="dark"] .exp-more-cta { color: #c7d2fe; }
   .exp-wide img { aspect-ratio: 16 / 10; }
   .bp-cao { grid-template-columns: 1fr; }
   .about-inner { grid-template-columns: 1fr; }
-  .about-photo { max-width: 340px; margin-inline: auto; width: 100%; }
 }
 @media (max-width: 560px) {
   .nav-cta { display: none; }
