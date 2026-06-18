@@ -334,10 +334,10 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="kicker">Also in the workshop</span>
-          <h2 class="section-title">Two more, built solo.</h2>
+          <h2 class="section-title">Four more, built solo.</h2>
           <p class="section-lede">
-            Same end-to-end approach, different problems — a privacy-first finance app and a control plane for a
-            home AI rig. Both SvelteKit&nbsp;2 / Svelte&nbsp;5, both local-first.
+            Same end-to-end approach, different problems — personal finance, an AI control plane, a music player,
+            and meeting notes. All SvelteKit&nbsp;2 / Svelte&nbsp;5, all local-first and self-hosted.
           </p>
         </div>
 
@@ -358,6 +358,24 @@
               <p class="proj-tagline">A control plane for your own AI rig.</p>
               <p>Routes each chat to your local model (Ollama / LM Studio) when the rig is up and falls back to the cloud when it isn't — streaming the reply and showing which backend answered, tokens/sec, time-to-first-token, and live VRAM.</p>
               <div class="proj-tags"><span>SvelteKit 2</span><span>Svelte 5</span><span>Ollama</span><span>SSE streaming</span><span>Tailscale</span></div>
+            </div>
+          </article>
+          <article class="proj-card reveal">
+            <div class="proj-shot"><img src="assets/timbre.jpg" alt="Timbre — self-hosted music player showing a metadata-rich library of albums with cover art and a now-playing bar" loading="lazy" decoding="async" /></div>
+            <div class="proj-body">
+              <div class="proj-head"><span class="proj-name">Timbre</span><span class="proj-badge">Self-hosted · no cloud</span></div>
+              <p class="proj-tagline">A no-subscription music player.</p>
+              <p>A free take on what Roon does well — a metadata-rich library and a good-looking remote for music on your own box. EBU-R128 loudness leveling in hand-authored WebAssembly, multi-room zones, internet radio, and Apple&nbsp;Music import.</p>
+              <div class="proj-tags"><span>SvelteKit 2</span><span>Svelte 5</span><span>node:sqlite (FTS5)</span><span>WebAssembly</span><span>Snapcast</span></div>
+            </div>
+          </article>
+          <article class="proj-card reveal">
+            <div class="proj-shot"><img src="assets/cadence.jpg" alt="Cadence — local meeting transcription library showing a summarized meeting and extracted open action items" loading="lazy" decoding="async" /></div>
+            <div class="proj-body">
+              <div class="proj-head"><span class="proj-name">Cadence</span><span class="proj-badge">Local · private</span></div>
+              <p class="proj-tagline">Meeting notes that never leave your machine.</p>
+              <p>Drop in a recording and Cadence transcribes it with a local whisper.cpp, then a local LLM writes the summary and pulls out per-person action items — speaker segments, search, and follow-ups, all on-device.</p>
+              <div class="proj-tags"><span>SvelteKit 2</span><span>Svelte 5</span><span>node:sqlite</span><span>whisper.cpp</span><span>Ollama</span><span>WebAssembly</span></div>
             </div>
           </article>
         </div>
