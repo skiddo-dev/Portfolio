@@ -1,179 +1,214 @@
-/* =========================================================
-   Bob Bice — Portfolio interactions
-   ========================================================= */
+/* bobbice.dev: theme toggle, the results mapper, screenshot viewer, section highlighting. No dependencies. */
 (function () {
-  "use strict";
+  'use strict';
 
   var root = document.documentElement;
-  var reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var systemDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-  /* ---------- theme toggle ---------- */
-  var toggle = document.getElementById("themeToggle");
+  function theme() { return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'; }
+
+  /* ------------------------------------------------------------ theme */
+  var toggle = document.getElementById('themeToggle');
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  function syncTheme() {
+    var dark = theme() === 'dark';
+    if (toggle) toggle.setAttribute('aria-pressed', String(dark));
+    if (themeMeta) themeMeta.setAttribute('content', dark ? '#122d50' : '#eef3f8');
+  }
+
+  function setTheme(next, remember) {
+    root.setAttribute('data-theme', next);
+    if (remember) { try { localStorage.setItem('bb-theme', next); } catch (e) {} }
+    syncTheme();
+    document.dispatchEvent(new CustomEvent('themechange', { detail: next }));
+  }
+
   if (toggle) {
-    toggle.addEventListener("click", function () {
-      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("bb-theme", next); } catch (e) {}
+    toggle.addEventListener('click', function () {
+      var next = theme() === 'dark' ? 'light' : 'dark';
+      if (!document.startViewTransition || reduceMotion.matches) { setTheme(next, true); return; }
+      var r = toggle.getBoundingClientRect();
+      var x = r.left + r.width / 2;
+      var y = r.top + r.height / 2;
+      var radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      var t = document.startViewTransition(function () { setTheme(next, true); });
+      t.ready.then(function () {
+        root.animate(
+          { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'] },
+          { duration: 560, easing: 'cubic-bezier(.3,.7,.2,1)', pseudoElement: '::view-transition-new(root)' }
+        );
+      }).catch(function () {});
     });
   }
 
-  /* ---------- nav shadow on scroll ---------- */
-  var nav = document.querySelector(".nav");
-  var onScroll = function () {
-    if (!nav) return;
-    nav.classList.toggle("scrolled", window.scrollY > 8);
+  // Follow the system setting until the visitor picks a theme.
+  var onSystemChange = function (e) {
+    var stored = null;
+    try { stored = localStorage.getItem('bb-theme'); } catch (err) {}
+    if (stored !== 'light' && stored !== 'dark') setTheme(e.matches ? 'dark' : 'light', false);
   };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
+  if (systemDark.addEventListener) systemDark.addEventListener('change', onSystemChange);
+  syncTheme();
 
-  /* ---------- mobile menu (hamburger) ---------- */
-  var navToggle = document.getElementById("navToggle");
-  if (navToggle && nav) {
-    var closeMenu = function () {
-      nav.classList.remove("menu-open");
-      navToggle.setAttribute("aria-expanded", "false");
+  /* ----------------------------------------------------- results mapper */
+  var mapper = document.getElementById('mapper');
+  if (mapper) {
+    var svg = mapper.querySelector('.mapper__wires');
+    var rows = Array.prototype.slice.call(mapper.querySelectorAll('tbody tr'));
+    var wide = window.matchMedia('(min-width: 760px)');
+    var NS = 'http://www.w3.org/2000/svg';
+    var links = [];
+
+    rows.forEach(function (row, i) {
+      var g = document.createElementNS(NS, 'g');
+      g.setAttribute('class', 'link-group');
+      g.style.setProperty('--i', i);
+      var path = document.createElementNS(NS, 'path');
+      path.setAttribute('class', 'wire');
+      path.setAttribute('pathLength', '1');
+      var a = document.createElementNS(NS, 'circle');
+      a.setAttribute('class', 'port');
+      a.setAttribute('r', '4.5');
+      var b = document.createElementNS(NS, 'circle');
+      b.setAttribute('class', 'port');
+      b.setAttribute('r', '4.5');
+      b.style.setProperty('--d', '800ms');
+      g.appendChild(path); g.appendChild(a); g.appendChild(b);
+      svg.appendChild(g);
+      links.push({ row: row, g: g, path: path, a: a, b: b });
+
+      var on = function () { row.classList.add('is-active'); g.classList.add('is-active'); };
+      var off = function () { row.classList.remove('is-active'); g.classList.remove('is-active'); };
+      row.addEventListener('mouseenter', on);
+      row.addEventListener('mouseleave', off);
+      row.addEventListener('focusin', on);
+      row.addEventListener('focusout', off);
+    });
+
+    var layout = function () {
+      if (!wide.matches) return;
+      var box = mapper.getBoundingClientRect();
+      svg.setAttribute('viewBox', '0 0 ' + box.width + ' ' + box.height);
+      svg.setAttribute('width', box.width);
+      svg.setAttribute('height', box.height);
+      links.forEach(function (l) {
+        var needCell = l.row.querySelector('.c-need');
+        var doneCell = l.row.querySelector('.c-done');
+        var need = needCell.querySelector('.need').getBoundingClientRect();
+        var done = doneCell.querySelector('.done').getBoundingClientRect();
+        var nc = needCell.getBoundingClientRect();
+        var dc = doneCell.getBoundingClientRect();
+        var needPad = parseFloat(getComputedStyle(needCell).paddingRight) || 0;
+        var donePad = parseFloat(getComputedStyle(doneCell).paddingLeft) || 0;
+        var x1 = nc.right - needPad + 10 - box.left;
+        var x2 = dc.left + donePad - 12 - box.left;
+        var y1 = need.top + need.height / 2 - box.top;
+        var y2 = done.top + done.height / 2 - box.top;
+        var dx = (x2 - x1) * 0.55;
+        l.path.setAttribute('d', 'M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ' ' + (x2 - dx) + ' ' + y2 + ' ' + x2 + ' ' + y2);
+        l.a.setAttribute('cx', x1); l.a.setAttribute('cy', y1);
+        l.b.setAttribute('cx', x2); l.b.setAttribute('cy', y2);
+      });
     };
-    navToggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("menu-open");
-      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    document.querySelectorAll("#navLinks a").forEach(function (a) {
-      a.addEventListener("click", closeMenu);
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") closeMenu();
-    });
+
+    var queued = false;
+    var schedule = function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; layout(); });
+    };
+
+    layout();
+    if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(mapper);
+    else window.addEventListener('resize', schedule);
+    if (wide.addEventListener) wide.addEventListener('change', schedule);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+
+    // Draw the wires once, when the mapper first comes into view.
+    if (!reduceMotion.matches && 'IntersectionObserver' in window) {
+      mapper.classList.add('is-armed');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          mapper.classList.add('is-drawn');
+          io.disconnect();
+          setTimeout(function () { mapper.classList.remove('is-armed', 'is-drawn'); }, 2400);
+        });
+      }, { threshold: 0.25 });
+      io.observe(mapper);
+    }
   }
 
-  /* ---------- scroll reveal ---------- */
-  var revealEls = document.querySelectorAll(".reveal");
-  if (reduceMotion || !("IntersectionObserver" in window)) {
-    revealEls.forEach(function (el) { el.classList.add("in"); });
-  } else {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    revealEls.forEach(function (el) { io.observe(el); });
-  }
+  /* ------------------------------------------------ board screenshot */
+  var boardImg = document.getElementById('boardShot');
+  var boardBtn = document.getElementById('boardButton');
+  var segBtns = Array.prototype.slice.call(document.querySelectorAll('[data-shot]'));
+  var pickedShot = false;
 
-  /* ---------- stat count-ups ---------- */
-  var counted = false;
-  function runCounts() {
-    if (counted) return;
-    counted = true;
-    document.querySelectorAll(".stat-num[data-count]").forEach(function (el) {
-      var target = parseInt(el.getAttribute("data-count"), 10);
-      var suffix = el.getAttribute("data-suffix") || "";
-      if (reduceMotion) { el.textContent = target + suffix; return; }
-      var start = performance.now();
-      var dur = 1100;
-      function frame(now) {
-        var p = Math.min((now - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(target * eased) + suffix;
-        if (p < 1) requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    });
+  function showBoard(mode) {
+    if (!boardImg) return;
+    var src = 'assets/board-' + mode + '.png';
+    if (boardImg.getAttribute('src') !== src) boardImg.setAttribute('src', src);
+    if (boardBtn) boardBtn.setAttribute('data-view', src);
+    segBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-shot') === mode)); });
   }
-  var heroStats = document.querySelector(".hero-stats");
-  if (heroStats && "IntersectionObserver" in window && !reduceMotion) {
-    var sObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { runCounts(); sObs.disconnect(); } });
-    }, { threshold: 0.4 });
-    sObs.observe(heroStats);
-    // safety net if observer never fires (e.g. above the fold already shown)
-    setTimeout(runCounts, 1400);
-  } else {
-    runCounts();
-  }
-
-  /* ---------- board light/dark shot toggle ---------- */
-  var boardShot = document.getElementById("boardShot");
-  var stBtns = document.querySelectorAll(".st-btn");
-  stBtns.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      stBtns.forEach(function (b) { b.classList.remove("is-active"); });
-      btn.classList.add("is-active");
-      if (boardShot) boardShot.src = "assets/board-" + btn.getAttribute("data-shot") + ".png";
-    });
+  segBtns.forEach(function (b) {
+    b.addEventListener('click', function () { pickedShot = true; showBoard(b.getAttribute('data-shot')); });
   });
+  document.addEventListener('themechange', function (e) { if (!pickedShot) showBoard(e.detail); });
+  showBoard(theme());
 
-  /* ---------- "+ more" explorations toggle ---------- */
-  var moreBtn = document.getElementById("expMore");
-  var exploreGrid = document.querySelector(".explore-grid");
-  if (moreBtn && exploreGrid) {
-    moreBtn.addEventListener("click", function () {
-      var open = exploreGrid.classList.toggle("is-open");
-      moreBtn.setAttribute("aria-expanded", open ? "true" : "false");
-      var label = moreBtn.querySelector(".exp-more-label");
-      if (label) label.textContent = open ? "Show less" : "Show";
-      if (open) {
-        var first = exploreGrid.querySelector(".exp-extra");
-        if (first) first.focus({ preventScroll: true });
-      }
+  /* ------------------------------------------------------------ viewer */
+  var viewer = document.getElementById('viewer');
+  if (viewer && typeof viewer.showModal === 'function') {
+    var vImg = viewer.querySelector('.viewer__img');
+    var vTitle = viewer.querySelector('.viewer__title');
+    var vDesc = viewer.querySelector('.viewer__desc');
+
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-view]');
+      if (!trigger) return;
+      var thumb = trigger.querySelector('img');
+      vImg.src = trigger.getAttribute('data-view');
+      vImg.alt = (thumb && thumb.getAttribute('alt')) || trigger.getAttribute('data-title') || '';
+      vTitle.textContent = trigger.getAttribute('data-title') || '';
+      vDesc.textContent = trigger.getAttribute('data-desc') || '';
+      viewer.showModal();
+    });
+    viewer.querySelector('.viewer__close').addEventListener('click', function () { viewer.close(); });
+    viewer.addEventListener('click', function (e) { if (e.target === viewer) viewer.close(); });
+    var blank = vImg.getAttribute('src');
+    viewer.addEventListener('close', function () { vImg.setAttribute('src', blank); });
+  } else if (viewer) {
+    // Very old browsers: open the full image instead.
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-view]');
+      if (trigger) window.open(trigger.getAttribute('data-view'), '_blank', 'noopener');
     });
   }
 
-  /* ---------- lightbox ---------- */
-  var lb = document.getElementById("lightbox");
-  var lbImg = document.getElementById("lbImg");
-  var lbCap = document.getElementById("lbCap");
-  var lbClose = document.getElementById("lbClose");
-  var lastFocused = null;
-
-  function openLb(src, title, desc, alt) {
-    if (!lb) return;
-    lastFocused = document.activeElement;
-    lbImg.src = src;
-    lbImg.alt = alt || title || "";
-    lbCap.querySelector("strong").textContent = title || "";
-    lbCap.querySelector("span").textContent = desc || "";
-    lb.hidden = false;
-    document.body.style.overflow = "hidden";
-    lbClose.focus();
-  }
-  function closeLb() {
-    if (!lb) return;
-    lb.hidden = true;
-    lbImg.src = "";
-    document.body.style.overflow = "";
-    if (lastFocused && lastFocused.focus) lastFocused.focus();
-  }
-
-  document.querySelectorAll(".exp[data-img]").forEach(function (card) {
-    card.addEventListener("click", function () {
-      var img = card.querySelector("img");
-      openLb(card.getAttribute("data-img"), card.getAttribute("data-title"),
-             card.getAttribute("data-desc"), img ? img.alt : "");
-    });
-  });
-
-  if (lbClose) lbClose.addEventListener("click", closeLb);
-  if (lb) lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && lb && !lb.hidden) closeLb();
-  });
-
-  /* ---------- scroll-spy: highlight the nav link for the section in view ---------- */
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
-  var spySections = navLinks
-    .map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); })
-    .filter(Boolean);
-  if (spySections.length && "IntersectionObserver" in window) {
+  /* ----------------------------------------------- current section */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.primary a[href^="#"]'));
+  if ('IntersectionObserver' in window && navLinks.length) {
+    var byId = {};
+    navLinks.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
     var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          var id = "#" + e.target.id;
-          navLinks.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === id); });
+      entries.forEach(function (entry) {
+        var link = byId[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (a) { a.removeAttribute('aria-current'); });
+          link.setAttribute('aria-current', 'true');
+        } else if (link.getAttribute('aria-current') === 'true') {
+          link.removeAttribute('aria-current');
         }
       });
-    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
-    spySections.forEach(function (s) { spy.observe(s); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(byId).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) spy.observe(el);
+    });
   }
 })();
