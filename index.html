@@ -1,564 +1,563 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bob Bice — Product Designer & Engineer</title>
-  <meta name="description" content="Bob Bice designs and builds polished software end-to-end — from design systems to native iOS. Featuring Blueprint, a field-service platform for grocery construction." />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bob Bice, Senior Business Analyst</title>
+  <meta name="description" content="Senior business analyst with twelve years in mortgage, title and lending. Requirements, process maps and data mappings, plus the automation and AI to run them." />
+  <link rel="canonical" href="https://bobbice.dev/" />
   <meta name="color-scheme" content="light dark" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260615b" />
+  <meta name="theme-color" content="#eef3f8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261117" />
   <link rel="author" href="https://www.linkedin.com/in/bob-bice/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Bob Bice — Product Designer & Engineer" />
-  <meta property="og:description" content="I design and ship software end-to-end. Flagship: Blueprint — a field-service platform built solo, design through deploy. Plus a dozen interface explorations." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bobbice.dev/" />
-  <meta property="og:image" content="https://bobbice.dev/og.png" />
+  <meta property="og:title" content="Bob Bice, Senior Business Analyst" />
+  <meta property="og:description" content="I map the work, then build what runs it. Twelve years in mortgage, title and lending, with AI and automation as the edge." />
+  <meta property="og:image" content="https://bobbice.dev/og.png?v=20261117" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Bob Bice: I map the work, then build what runs it." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bob Bice — Product Designer & Engineer" />
-  <meta name="twitter:description" content="I design and ship software end-to-end — Blueprint, a dozen interface explorations, web + native iOS." />
-  <meta name="twitter:image" content="https://bobbice.dev/og.png" />
+  <meta name="twitter:title" content="Bob Bice, Senior Business Analyst" />
+  <meta name="twitter:description" content="I map the work, then build what runs it. Twelve years in mortgage, title and lending, with AI and automation as the edge." />
+  <meta name="twitter:image" content="https://bobbice.dev/og.png?v=20261117" />
 
-  <!-- No-flash theme boot: set theme before paint -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Bob Bice",
+    "jobTitle": "Senior Business Analyst",
+    "url": "https://bobbice.dev/",
+    "email": "mailto:bob.c.bice@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Clarkston", "addressRegion": "MI", "addressCountry": "US" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Michigan State University" },
+    "sameAs": ["https://www.linkedin.com/in/bob-bice/", "https://github.com/skiddo-dev"]
+  }
+  </script>
+
+  <!-- Set the theme before first paint so there is no flash. -->
   <script>
     (function () {
-      try {
-        var t = localStorage.getItem('bb-theme');
-        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', t);
-      } catch (e) {}
+      var t = null;
+      try { t = localStorage.getItem('bb-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20260615" />
+  <link rel="preload" href="fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css?v=20261117" />
 </head>
 <body>
-  <a class="skip-link" href="#blueprint">Skip to content</a>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- ===================== NAV ===================== -->
-  <header class="nav" id="top">
-    <div class="container nav-inner">
-      <a class="brand" href="#top" aria-label="Bob Bice — home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 4v16"/>
-            <path d="M8 4h5.5a4 4 0 0 1 0 8H8"/>
-            <path d="M8 12h6a4 4 0 0 1 0 8H8"/>
-          </svg>
-        </span>
-        <span class="brand-name">Bob&nbsp;Bice</span>
+  <header class="masthead">
+    <div class="wrap masthead__row">
+      <a class="wordmark" href="#top" aria-label="Bob Bice, back to top">
+        <svg class="mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
+          <rect class="mark__bg" x="0" y="0" width="32" height="32" rx="7" />
+          <path class="mark__wire" d="M10 11.5 C 17 11.5, 15 20.5, 22 20.5" />
+          <circle class="mark__port" cx="9" cy="11.5" r="3" />
+          <circle class="mark__port" cx="23" cy="20.5" r="3" />
+        </svg>
+        <span class="wordmark__name">Bob Bice</span>
       </a>
 
-      <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <nav class="primary" aria-label="Sections">
+        <a href="#results">Results</a>
         <a href="#blueprint">Blueprint</a>
-        <a href="#explorations">Explorations</a>
-        <a href="#projects">Projects</a>
-        <a href="#capabilities">Capabilities</a>
         <a href="#experience">Experience</a>
-        <a href="#about">About</a>
+        <a href="#ai">Applied AI</a>
+        <a href="#contact">Contact</a>
       </nav>
 
-      <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle theme">
-          <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-          <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-        </button>
-        <a class="btn btn-primary nav-cta" href="#contact">Get in touch</a>
-        <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-        </button>
-      </div>
+      <button class="theme" id="themeToggle" type="button" aria-pressed="false">
+        <svg class="theme__sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6" /></svg>
+        <svg class="theme__moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20.5 13.4A8.5 8.5 0 1 1 10.6 3.5a6.8 6.8 0 0 0 9.9 9.9Z" /></svg>
+        <span class="sr">Dark mode</span>
+      </button>
     </div>
   </header>
 
-  <main>
-    <!-- ===================== HERO ===================== -->
-    <section class="hero">
-      <div class="hero-aurora" aria-hidden="true">
-        <span class="blob b1"></span>
-        <span class="blob b2"></span>
-        <span class="blob b3"></span>
-        <span class="blob b4"></span>
-      </div>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap">
+        <h1 class="hero__title" id="hero-title"><span>I map the work,</span> <span>then build what runs it.</span></h1>
 
-      <div class="container hero-inner">
-        <p class="eyebrow reveal">Product designer &amp; full-stack engineer</p>
-        <h1 class="hero-title reveal">
-          I design and ship software<br /><span class="grad">end&#8209;to&#8209;end.</span>
-        </h1>
-        <p class="hero-sub reveal">
-          From design tokens and accessibility gates to MongoDB, native iOS, and hand-authored WebAssembly —
-          I take products from blank page to production, design through deploy.
+        <p class="lede">
+          I’m Bob Bice, a senior business analyst. For twelve years I’ve turned ambiguous business needs into
+          requirements, process maps and data mappings that engineering can build from, mostly in mortgage and
+          title at Rocket&nbsp;Companies/Amrock and United Wholesale Mortgage. When automation is the faster path,
+          I build it myself, AI included.
         </p>
-        <div class="hero-cta reveal">
-          <a class="btn btn-primary" href="#blueprint">See the flagship<span class="arrow">→</span></a>
-          <a class="btn btn-ghost" href="#explorations">Browse explorations</a>
-        </div>
 
-        <div class="hero-stats reveal" role="list">
-          <div class="stat" role="listitem"><span class="stat-num" data-count="9">9</span><span class="stat-label">product modules</span></div>
-          <div class="stat" role="listitem"><span class="stat-num" data-count="12">12</span><span class="stat-label">interface explorations</span></div>
-          <div class="stat" role="listitem"><span class="stat-num" data-count="560" data-suffix="+">560+</span><span class="stat-label">automated tests</span></div>
-          <div class="stat" role="listitem"><span class="stat-num stat-text">Web&nbsp;+&nbsp;iOS</span><span class="stat-label">shipped to both</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== BLUEPRINT CASE STUDY ===================== -->
-    <section class="section section-blueprint" id="blueprint">
-      <div class="container">
-        <div class="bp-head reveal">
-          <div>
-            <span class="kicker">Flagship · case study</span>
-            <h2 class="section-title">Blueprint</h2>
-            <p class="bp-tagline">Steel-to-task operations for grocery construction.</p>
+        <aside class="titleblock" aria-label="At a glance">
+          <dl class="titleblock__facts">
+            <div><dt>Role</dt><dd>Senior business analyst</dd></div>
+            <div><dt>Experience</dt><dd>12 years</dd></div>
+            <div><dt>Domain</dt><dd>Mortgage, title and lending</dd></div>
+            <div><dt>Also builds</dt><dd>Automation and LLM apps</dd></div>
+            <div><dt>Based in</dt><dd>Clarkston, Michigan</dd></div>
+          </dl>
+          <div class="titleblock__actions">
+            <a class="btn btn--solid" href="Bob-Bice-Resume-BA.pdf" target="_blank" rel="noopener">Business analyst résumé <span class="btn__meta">PDF</span></a>
+            <a class="btn" href="Bob-Bice-Resume-AI.pdf" target="_blank" rel="noopener">AI engineer résumé <span class="btn__meta">PDF</span></a>
+            <a class="titleblock__mail" href="mailto:bob.c.bice@gmail.com">bob.c.bice@gmail.com</a>
           </div>
-          <div class="bp-tags">
-            <span class="tag">Design system</span>
-            <span class="tag">SvelteKit&nbsp;2 · Svelte&nbsp;5</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">Native iOS</span>
-            <span class="tag">Azure</span>
-          </div>
-        </div>
-
-        <!-- Challenge / Approach / Outcome -->
-        <div class="bp-cao reveal">
-          <div class="cao">
-            <span class="cao-k">Challenge</span>
-            <p>A fixtures-and-construction shop ran quoting, field work, and the books across disconnected spreadsheets, email, and QuickBooks — no single view from lead to ledger.</p>
-          </div>
-          <div class="cao">
-            <span class="cao-k">Approach</span>
-            <p>One platform spanning the whole job lifecycle — prospecting → quotes → a field Kanban → double-entry books → forecasting — designed and built solo on a token-driven, accessible design system, web and native iOS.</p>
-          </div>
-          <div class="cao">
-            <span class="cao-k">Outcome</span>
-            <p>A single source of truth where email and receipts parse onto cards via AI. Live in production on Azure, backed by 560+ automated tests and a WCAG contrast gate enforced in CI.</p>
-          </div>
-        </div>
-
-        <!-- Showcase: board screenshot with light/dark toggle -->
-        <figure class="bp-showcase reveal">
-          <div class="browser">
-            <div class="browser-bar">
-              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-              <span class="browser-url">app.blueprint — Board</span>
-              <div class="shot-toggle" role="group" aria-label="Board theme">
-                <button type="button" class="st-btn is-active" data-shot="light">Light</button>
-                <button type="button" class="st-btn" data-shot="dark">Dark</button>
-              </div>
-            </div>
-            <div class="browser-body">
-              <img id="boardShot" class="shot" src="assets/board-light.png"
-                   alt="Blueprint Kanban board: grocery-construction jobs across To Do, In Progress, Review, Done, and On Hold columns." loading="lazy" decoding="async" />
-            </div>
-          </div>
-          <figcaption>The job board — ranked cards, store lanes, density toggle, filters, and inline detail sheets.</figcaption>
-        </figure>
-
-        <!-- Module grid -->
-        <div class="bp-modules">
-          <article class="module reveal">
-            <span class="module-ic">▦</span>
-            <h3>Job Board</h3>
-            <p>Ranked Kanban with store lanes, aging &amp; WIP signals, checklists, bulk actions, and a quick-add flow.</p>
-          </article>
-          <article class="module reveal">
-            <span class="module-ic">◴</span>
-            <h3>Dashboard</h3>
-            <p>Pipeline, win-rate, and cash-on-hand at a glance — Chart.js datasets themed for light and dark.</p>
-          </article>
-          <article class="module reveal">
-            <span class="module-ic">$</span>
-            <h3>Books</h3>
-            <p>In-house double-entry accounting: ledger, AR/AP, statements, bank rec, job costing, even fixed-asset depreciation.</p>
-          </article>
-          <article class="module reveal">
-            <span class="module-ic">❝</span>
-            <h3>Quotes</h3>
-            <p>Estimate builder with labor/total toggles and one-click branded PDFs; won quotes flow into invoices.</p>
-          </article>
-          <article class="module reveal">
-            <span class="module-ic">⌖</span>
-            <h3>Prospects</h3>
-            <p>Live warehouse leads from OpenStreetMap + county GIS — owner, occupant, and assessed value, no paid API.</p>
-          </article>
-          <article class="module reveal">
-            <span class="module-ic">∿</span>
-            <h3>Forecast</h3>
-            <p>Monte-Carlo revenue forecast running on <em>hand-authored WebAssembly</em> — a genuine ~2× over the JS twin.</p>
-          </article>
-        </div>
-
-        <!-- Secondary screenshots -->
-        <div class="bp-gallery">
-          <figure class="bp-gcard reveal">
-            <img src="assets/dashboard-light.png" alt="Blueprint dashboard with pipeline and win-rate charts" loading="lazy" decoding="async" />
-            <figcaption>Dashboard — pipeline &amp; win-rate analytics</figcaption>
-          </figure>
-          <figure class="bp-gcard reveal">
-            <img src="assets/books-light.png" alt="Blueprint Books — accounting module" loading="lazy" decoding="async" />
-            <figcaption>Books — full double-entry accounting</figcaption>
-          </figure>
-          <figure class="bp-gcard reveal">
-            <img src="assets/quotes-light.png" alt="Blueprint quote generator" loading="lazy" decoding="async" />
-            <figcaption>Quotes — estimate builder &amp; PDFs</figcaption>
-          </figure>
-          <figure class="bp-gcard reveal">
-            <img src="assets/prospects-light.jpg" alt="Blueprint Prospects — warehouse leads with filters and analytics" loading="lazy" decoding="async" />
-            <figcaption>Prospects — live warehouse leads + analytics</figcaption>
-          </figure>
-          <figure class="bp-gcard reveal">
-            <img src="assets/forecast-light.jpg" alt="Blueprint Forecast — WebAssembly Monte Carlo revenue histogram" loading="lazy" decoding="async" />
-            <figcaption>Forecast — WASM Monte-Carlo over open quotes</figcaption>
-          </figure>
-          <figure class="bp-gcard reveal">
-            <img src="assets/jobs-light.jpg" alt="Blueprint Job Cockpit — per-store margin rollup" loading="lazy" decoding="async" />
-            <figcaption>Job Cockpit — per-store margin rollup</figcaption>
-          </figure>
-        </div>
-
-        <!-- Native iOS showcase -->
-        <div class="ios-showcase">
-          <div class="ios-head reveal">
-            <span class="kicker">And it's native, too</span>
-            <h3 class="ios-title">Blueprint, in your pocket.</h3>
-            <p>A SwiftUI companion app — the board, dashboard, quotes, prospects, and search on iOS, with offline edits, drag &amp; drop, and a fastlane&nbsp;→&nbsp;TestFlight pipeline.</p>
-          </div>
-          <div class="ios-phones reveal">
-            <figure class="phone"><img src="assets/ios-board.jpg" alt="Blueprint iOS — Kanban board" loading="lazy" decoding="async" /></figure>
-            <figure class="phone"><img src="assets/ios-dashboard.jpg" alt="Blueprint iOS — dashboard" loading="lazy" decoding="async" /></figure>
-            <figure class="phone"><img src="assets/ios-quotes.jpg" alt="Blueprint iOS — quotes" loading="lazy" decoding="async" /></figure>
-            <figure class="phone"><img src="assets/ios-prospects.jpg" alt="Blueprint iOS — prospects" loading="lazy" decoding="async" /></figure>
-            <figure class="phone"><img src="assets/ios-comments.jpg" alt="Blueprint iOS — task comments" loading="lazy" decoding="async" /></figure>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== EXPLORATIONS ===================== -->
-    <section class="section section-explore" id="explorations">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Interface explorations</span>
-          <h2 class="section-title">Same app. A dozen worlds.</h2>
-          <p class="section-lede">
-            Each of these is the <em>entire</em> Blueprint app — same routes, same real data — reskinned into a
-            distinct design language to push on motion, depth, type, and platform CSS. Svelte-scoped, so they never
-            touch the production design system or its contrast gate.
-          </p>
-        </div>
-
-        <div class="explore-grid">
-          <button class="exp reveal" type="button" data-img="assets/exp-cobe.jpg" data-title="Cobe — the globe" data-desc="A hand-rolled WebGL globe that plots every store you touch as points of light — Bloomfield Hills HQ out to every reset in the network, no map library.">
-            <img src="assets/exp-cobe.jpg" alt="Hand-rolled WebGL globe interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Cobe</strong><em>Hand-rolled WebGL globe</em></span>
-          </button>
-
-          <button class="exp reveal" type="button" data-img="assets/exp-glass.jpg" data-title="Glassmorphism" data-desc="Frosted panels floating on a living gradient, with spring micro-interactions and a glass command dock.">
-            <img src="assets/exp-glass.jpg" alt="Glassmorphism interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Glass</strong><em>Glassmorphism · micro-interactions</em></span>
-          </button>
-
-          <button class="exp reveal" type="button" data-img="assets/exp-spatial.jpg" data-title="Spatial" data-desc="Native-CSS 3D depth — the board, books, quotes, and prospects float on a z-axis and tilt under your pointer. The whole operation, arranged in space.">
-            <img src="assets/exp-spatial.jpg" alt="Spatial pointer-tilt CSS 3D interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Spatial</strong><em>Pointer-tilt · CSS 3D</em></span>
-          </button>
-
-          <button class="exp reveal" type="button" data-img="assets/exp-retro.jpg" data-title="Retrofuturism" data-desc="Synthwave sunset, a perspective neon grid, CRT scanlines, and chrome HUD type — an outrun control deck.">
-            <img src="assets/exp-retro.jpg" alt="Retrofuturism synthwave interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Retro</strong><em>Synthwave · outrun</em></span>
-          </button>
-
-          <button class="exp reveal" type="button" data-img="assets/exp-maximalism.jpg" data-title="Maximalism" data-desc="A gilded salon — wine velvet, jewel terrazzo, gold-foil display serif, and filigree frames. More is more.">
-            <img src="assets/exp-maximalism.jpg" alt="Maximalist gilded interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Maximalism</strong><em>Gilded salon</em></span>
-          </button>
-
-          <button class="exp reveal" type="button" data-img="assets/exp-foxes.jpg" data-title="Foxes — Field Fables" data-desc="An editorial &quot;field fable&quot; — cream-and-ink magazine typography chaptered like an issue, with a pixel-fox mascot keeping the whole yard in its eye.">
-            <img src="assets/exp-foxes.jpg" alt="Editorial pixel-fox themed interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Foxes</strong><em>Editorial · pixel-fox</em></span>
-          </button>
-
-          <button class="exp reveal exp-wide" type="button" data-img="assets/exp-wasm-canvas.jpg" data-title="Render Lab" data-desc="Hand-authored WebAssembly drawing Mandelbrot & Julia sets live to canvas, with a WASM ⇄ JS A/B benchmark.">
-            <img src="assets/exp-wasm-canvas.jpg" alt="WebAssembly render lab exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Render Lab</strong><em>Hand-authored WebAssembly</em></span>
-          </button>
-
-          <button class="exp-more reveal" type="button" id="expMore" aria-expanded="false" aria-controls="expLab expBrutal expPulse expNeu expPlatform">
-            <span class="exp-more-inner">
-              <span class="exp-more-plus" aria-hidden="true">+</span>
-              <strong>5 more explorations</strong>
-              <span class="exp-more-sub">Lab &middot; Brutal &middot; Pulse &middot; Neu &middot; Platform</span>
-              <span class="exp-more-cta"><span class="exp-more-label">Show</span> <span class="chev" aria-hidden="true">&#9662;</span></span>
-            </span>
-          </button>
-
-          <button class="exp exp-extra" type="button" id="expLab" data-img="assets/exp-lab.jpg" data-title="Lab — Ambient / Spatial" data-desc="Aurora layers, spatial depth, and pointer-driven parallax — a calm, atmospheric reimagining.">
-            <img src="assets/exp-lab.jpg" alt="Ambient spatial interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Lab</strong><em>Ambient · spatial</em></span>
-          </button>
-
-          <button class="exp exp-extra" type="button" id="expBrutal" data-img="assets/exp-brutal.jpg" data-title="Neobrutalism" data-desc="Hard edges, raw monospace type, and unapologetic contrast — productized into a usable six-page app.">
-            <img src="assets/exp-brutal.jpg" alt="Neobrutalism interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Brutal</strong><em>Neobrutalism</em></span>
-          </button>
-
-          <button class="exp exp-extra" type="button" id="expPulse" data-img="assets/exp-pulse.jpg" data-title="Pulse" data-desc="A neon command rail with a radial warp overlay, full keyboard navigation, and five swappable live palettes.">
-            <img src="assets/exp-pulse.jpg" alt="Neon command-rail interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Pulse</strong><em>Command rail · palettes</em></span>
-          </button>
-
-          <button class="exp exp-extra" type="button" id="expNeu" data-img="assets/exp-neu.jpg" data-title="Neumorphism" data-desc="Soft-UI — one monochrome surface where depth comes only from dual light/dark shadows, and controls physically press in. The dark variant comes free by re-pointing two CSS variables.">
-            <img src="assets/exp-neu.jpg" alt="Neumorphism soft-UI interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Neu</strong><em>Neumorphism &middot; soft-UI</em></span>
-          </button>
-
-          <button class="exp exp-extra" type="button" id="expPlatform" data-img="assets/exp-platform.jpg" data-title="Native Platform" data-desc="The whole app rebuilt on bleeding-edge native CSS — anchor positioning, native masonry, scroll-driven carousels, and cross-document view transitions. No JS layout or animation libraries.">
-            <img src="assets/exp-platform.jpg" alt="Native-platform CSS interface exploration" loading="lazy" decoding="async" />
-            <span class="exp-meta"><strong>Platform</strong><em>Native web platform CSS</em></span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== MORE PROJECTS ===================== -->
-    <section class="section section-proj" id="projects">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Also in the workshop</span>
-          <h2 class="section-title">Four more, built solo.</h2>
-          <p class="section-lede">
-            Same end-to-end approach, different problems — personal finance, an AI control plane, a music player,
-            and meeting notes. All SvelteKit&nbsp;2 / Svelte&nbsp;5, all local-first and self-hosted.
-          </p>
-        </div>
-
-        <div class="proj-grid">
-          <article class="proj-card reveal">
-            <div class="proj-shot"><img src="assets/hearth.jpg" alt="Hearth — personal-finance dashboard with net worth, a spending donut, and category breakdown" loading="lazy" decoding="async" /></div>
-            <div class="proj-body">
-              <div class="proj-head"><span class="proj-name">Hearth</span><span class="proj-badge">Private · on-device</span></div>
-              <p class="proj-tagline">A self-hosted Mint.</p>
-              <p>Privacy-first personal finance — accounts, transactions, budgets, and net-worth analytics that never leave your network. File &amp; SimpleFIN import, money stored as integer cents, with on-GPU AI categorization on the roadmap.</p>
-              <div class="proj-tags"><span>SvelteKit 2</span><span>Svelte 5</span><span>node:sqlite</span><span>Chart.js</span><span>Docker</span><span>Tailscale</span></div>
-            </div>
-          </article>
-          <article class="proj-card reveal">
-            <div class="proj-shot"><img src="assets/lattice.jpg" alt="Lattice — local-first AI control plane routing a chat to the local model with live tokens-per-second and VRAM telemetry" loading="lazy" decoding="async" /></div>
-            <div class="proj-body">
-              <div class="proj-head"><span class="proj-name">Lattice</span><span class="proj-badge">Local-first · tailnet</span></div>
-              <p class="proj-tagline">A control plane for your own AI rig.</p>
-              <p>Routes each chat to your local model (Ollama / LM Studio) when the rig is up and falls back to the cloud when it isn't — streaming the reply and showing which backend answered, tokens/sec, time-to-first-token, and live VRAM.</p>
-              <div class="proj-tags"><span>SvelteKit 2</span><span>Svelte 5</span><span>Ollama</span><span>SSE streaming</span><span>Tailscale</span></div>
-            </div>
-          </article>
-          <article class="proj-card reveal">
-            <div class="proj-shot"><img src="assets/timbre.jpg" alt="Timbre — self-hosted music player showing a metadata-rich library of albums with cover art and a now-playing bar" loading="lazy" decoding="async" /></div>
-            <div class="proj-body">
-              <div class="proj-head"><span class="proj-name">Timbre</span><span class="proj-badge">Self-hosted · no cloud</span></div>
-              <p class="proj-tagline">A no-subscription music player.</p>
-              <p>A free take on what Roon does well — a metadata-rich library and a good-looking remote for music on your own box. EBU-R128 loudness leveling in hand-authored WebAssembly, multi-room zones, internet radio, and Apple&nbsp;Music import.</p>
-              <div class="proj-tags"><span>SvelteKit 2</span><span>Svelte 5</span><span>node:sqlite (FTS5)</span><span>WebAssembly</span><span>Snapcast</span></div>
-            </div>
-          </article>
-          <article class="proj-card reveal">
-            <div class="proj-shot"><img src="assets/cadence.jpg" alt="Cadence — local meeting transcription library showing a summarized meeting and extracted open action items" loading="lazy" decoding="async" /></div>
-            <div class="proj-body">
-              <div class="proj-head"><span class="proj-name">Cadence</span><span class="proj-badge">Local · private</span></div>
-              <p class="proj-tagline">Meeting notes that never leave your machine.</p>
-              <p>Drop in a recording and Cadence transcribes it with a local whisper.cpp, then a local LLM writes the summary and pulls out per-person action items — speaker segments, search, and follow-ups, all on-device.</p>
-              <div class="proj-tags"><span>SvelteKit 2</span><span>Svelte 5</span><span>node:sqlite</span><span>whisper.cpp</span><span>Ollama</span><span>WebAssembly</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== CAPABILITIES ===================== -->
-    <section class="section section-cap" id="capabilities">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">What I do</span>
-          <h2 class="section-title">Design and engineering, without the handoff.</h2>
-        </div>
-
-        <div class="cap-grid">
-          <article class="cap reveal">
-            <h3>Design systems</h3>
-            <p>Token-driven theming, light/dark, and a contrast check wired into CI so accessibility can't quietly regress.</p>
-          </article>
-          <article class="cap reveal">
-            <h3>Full-stack product</h3>
-            <p>SvelteKit &amp; Svelte 5 on the front, TypeScript + MongoDB on the back, Dockerized to Azure via GitHub Actions.</p>
-          </article>
-          <article class="cap reveal">
-            <h3>Native iOS</h3>
-            <p>A SwiftUI companion app with offline board CRUD, drag &amp; drop, and a fastlane → TestFlight pipeline.</p>
-          </article>
-          <article class="cap reveal">
-            <h3>Applied AI</h3>
-            <p>Email &amp; receipt parsing onto cards, bank-line categorization, and month-end narratives — model proposes, human confirms.</p>
-          </article>
-          <article class="cap reveal">
-            <h3>Performance</h3>
-            <p>Hand-emitted WebAssembly for hot compute, request-level caching, precompression, and a 560+ test safety net.</p>
-          </article>
-          <article class="cap reveal">
-            <h3>Accessibility &amp; motion</h3>
-            <p>Focus traps, keyboard reach on every surface, a ⌘K command palette, view transitions, and reduced-motion paths.</p>
-          </article>
-        </div>
-
-        <div class="stack reveal">
-          <span class="stack-label">Stack</span>
-          <ul class="stack-list">
-            <li>SvelteKit 2</li><li>Svelte 5</li><li>TypeScript</li><li>MongoDB Atlas</li>
-            <li>Auth.js · Entra SSO</li><li>Chart.js</li><li>WebAssembly</li><li>SwiftUI</li>
-            <li>Docker</li><li>Azure Container Apps</li><li>GitHub Actions</li><li>Playwright</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== EXPERIENCE ===================== -->
-    <section class="section section-xp" id="experience">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Track record</span>
-          <h2 class="section-title">A decade shipping software in production.</h2>
-          <p class="section-lede">
-            Blueprint is the showcase; this is the day job. Ten years as a business analyst and developer turning
-            legacy systems into modern tools at some of the largest names in mortgage &amp; title.
-          </p>
-        </div>
-
-        <div class="xp-list">
-          <div class="xp reveal">
-            <div class="xp-when">2024 – 2026</div>
-            <div class="xp-body">
-              <h3>Business Analyst III <span class="xp-co">· United Wholesale Mortgage</span></h3>
-              <p>Automated SQL reporting for a <strong>15% lift</strong> in workflow efficiency and shipped a stakeholder-driven workflow system that raised engagement <strong>25%</strong>; helped stand up an enterprise AI-chatbot integration.</p>
-            </div>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-when">2022 – 2024</div>
-            <div class="xp-body">
-              <h3>Consultant <span class="xp-co">· Neteffects, Inc.</span></h3>
-              <p>Deprecated a legacy data-orchestration tool and validated gRPC message flows with Postman — halving response time and raising system throughput <strong>200%</strong>.</p>
-            </div>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-when">2020 – 2022</div>
-            <div class="xp-body">
-              <h3>Senior IT Business Analyst <span class="xp-co">· Rocket Companies — Amrock</span></h3>
-              <p>Principal analyst migrating a loan-origination platform processing <strong>$100B+ annually</strong> from legacy WPF to a cloud-native MS-SQL + Angular stack — CI/CD on Azure DevOps with Kubernetes and Docker, a zero-sync-issue migration across 100M+ records.</p>
-            </div>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-when">2013 – 2020</div>
-            <div class="xp-body">
-              <h3>IT Team Leader, Scrum Master &amp; Analyst <span class="xp-co">· Rocket Companies — Amrock</span></h3>
-              <p>Led a special-project team that cut appraisal turn-time <strong>95%</strong>; automated a check-refund process saving <strong>~$1M</strong> and three months; ran SAFe ceremonies and an SSO + cloud rollout on AWS/.NET.</p>
-            </div>
-          </div>
-        </div>
-
-        <p class="xp-foot reveal">Full history on the <a href="Bob-Bice-Resume.pdf" download>résumé</a> and <a href="https://www.linkedin.com/in/bob-bice/" target="_blank" rel="noopener">LinkedIn</a>.</p>
-      </div>
-    </section>
-
-    <!-- ===================== ABOUT ===================== -->
-    <section class="section section-about" id="about">
-      <div class="container about-inner">
-        <div class="about-copy reveal">
-          <span class="kicker">About</span>
-          <h2 class="section-title">Hi, I'm Bob.</h2>
-          <p>
-            I'm a business analyst and engineer who likes owning the whole thing — the look, the build, and the
-            ship. Ten years turning bloated legacy systems into modern tools taught me to care about the details
-            most people only notice when they're missing: keyboard paths, empty states, honest forms, a download
-            that isn't 0 bytes.
-          </p>
-          <p>
-            By day I've been a senior analyst and developer in mortgage &amp; title; on my own time I designed and
-            built <strong>Blueprint</strong> end-to-end — design tokens to Azure deploys — plus a dozen interface
-            explorations to keep the craft sharp.
-          </p>
-        </div>
-        <aside class="about-card reveal">
-          <h3>At a glance</h3>
-          <ul class="about-list">
-            <li><span>Role</span><strong>Analyst · Engineer · Designer</strong></li>
-            <li><span>Experience</span><strong>10 years in production</strong></li>
-            <li><span>Discipline</span><strong>Design → Deploy, solo</strong></li>
-            <li><span>Based in</span><strong>Metro Detroit, MI</strong></li>
-            <li><span>Platforms</span><strong>Web &amp; native iOS</strong></li>
-            <li><span>Currently</span><strong>Building Blueprint</strong></li>
-          </ul>
         </aside>
       </div>
     </section>
 
-    <!-- ===================== CONTACT ===================== -->
-    <section class="section section-contact" id="contact">
-      <div class="container contact-inner reveal">
-        <h2 class="contact-title">Let's build something worth shipping.</h2>
-        <p class="contact-sub">Open to product design &amp; engineering work. The fastest way to reach me is email.</p>
-        <div class="contact-actions">
-          <a class="btn btn-primary btn-lg" href="mailto:bob.c.bice@gmail.com">Email me<span class="arrow">→</span></a>
-          <a class="btn btn-ghost btn-lg" href="Bob-Bice-Resume.pdf" download>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
-            Résumé
+    <!-- Results: the field mapper -->
+    <section class="section results" id="results" aria-labelledby="results-title">
+      <div class="wrap">
+        <header class="sec-head">
+          <h2 id="results-title">Selected results</h2>
+          <p>Each row maps a business need to what I delivered and what it changed.</p>
+        </header>
+
+        <div class="mapper" id="mapper">
+          <svg class="mapper__wires" aria-hidden="true" focusable="false"></svg>
+          <table class="mapper__table" role="table">
+            <caption class="sr">Business needs, what was delivered, and the measured result</caption>
+            <thead role="rowgroup">
+              <tr role="row">
+                <th role="columnheader" scope="col" class="c-need">The need</th>
+                <th role="columnheader" scope="col" class="c-done">What I delivered</th>
+                <th role="columnheader" scope="col" class="c-result">Result</th>
+              </tr>
+            </thead>
+            <tbody role="rowgroup">
+              <tr role="row">
+                <td role="cell" class="c-need"><span class="need">A loan-origination platform processing $100B+ a year was stuck on legacy WPF.</span></td>
+                <td role="cell" class="c-done"><span class="done">As principal analyst, mapped 1,000+ fields across 100M+ records for its move to cloud-native MS-SQL and Angular.</span><span class="where">Amrock, 2020–2022</span></td>
+                <td role="cell" class="c-result"><span class="metric">Zero</span><span class="metric__label">sync issues in the migration</span></td>
+              </tr>
+              <tr role="row">
+                <td role="cell" class="c-need"><span class="need">Appraisals took too long to turn around.</span></td>
+                <td role="cell" class="c-done"><span class="done">Led a special-project team that moved the process to encrypted video.</span><span class="where">Amrock, 2017–2020</span></td>
+                <td role="cell" class="c-result"><span class="metric">−95%</span><span class="metric__label">appraisal turn-time</span></td>
+              </tr>
+              <tr role="row">
+                <td role="cell" class="c-need"><span class="need">Check refunds were worked by hand.</span></td>
+                <td role="cell" class="c-done"><span class="done">Automated the check-refund process.</span><span class="where">Amrock, 2013–2017</span></td>
+                <td role="cell" class="c-result"><span class="metric">~$1M</span><span class="metric__label">labor saved, plus three months</span></td>
+              </tr>
+              <tr role="row">
+                <td role="cell" class="c-need"><span class="need">Users needed one sign-in across the team’s applications.</span></td>
+                <td role="cell" class="c-done"><span class="done">Directed an SSO and cloud-native rollout on AWS and .NET.</span><span class="where">Amrock, 2017–2020</span></td>
+                <td role="cell" class="c-result"><span class="metric">−60%</span><span class="metric__label">support tickets</span></td>
+              </tr>
+              <tr role="row">
+                <td role="cell" class="c-need"><span class="need">Loan-data reports were built by hand.</span></td>
+                <td role="cell" class="c-done"><span class="done">Analyzed mortgage-loan data and automated report generation in SQL.</span><span class="where">United Wholesale Mortgage, 2024–2026</span></td>
+                <td role="cell" class="c-result"><span class="metric">+15%</span><span class="metric__label">workflow efficiency</span></td>
+              </tr>
+              <tr role="row">
+                <td role="cell" class="c-need"><span class="need">A contractor ran quotes, field work and the books across spreadsheets, email and QuickBooks.</span></td>
+                <td role="cell" class="c-done"><span class="done">Mapped and standardized the field processes, then built <a href="#blueprint">Blueprint</a> to run them, with AI reading the inbox.</span><span class="where">Independent consulting, 2026</span></td>
+                <td role="cell" class="c-result"><span class="metric">9</span><span class="metric__label">modules, plus an iPhone app</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blueprint case study -->
+    <section class="section bp" id="blueprint" aria-labelledby="bp-title">
+      <div class="wrap">
+        <header class="sec-head">
+          <h2 id="bp-title">Blueprint</h2>
+          <p class="sec-head__meta">Independent consulting, 2026. Field-service operations for a grocery-construction contractor.</p>
+          <p>
+            The contractor’s quotes, field work and books lived in spreadsheets, email and QuickBooks, with no
+            single view from lead to ledger. I mapped how the work actually moved, standardized it, then designed
+            and built the platform to run it.
+          </p>
+        </header>
+
+        <div class="bp__grid">
+          <ol class="steps">
+            <li class="step">
+              <h3>Discover</h3>
+              <p>Mapped the contractor’s ad-hoc field processes: how flagged vendor emails, permits and site alerts became work, and how quotes, bills and job costs were tracked.</p>
+            </li>
+            <li class="step">
+              <h3>Define</h3>
+              <p>Standardized them into workflows, scope and quote documents, and job-cost KPIs, so the build had a spec to meet.</p>
+            </li>
+            <li class="step">
+              <h3>Build</h3>
+              <p>Designed and built nine modules on SvelteKit, TypeScript and MongoDB, shipped to Azure Container Apps with Entra ID sign-in. Microsoft Graph pulls flagged email, and an OpenAI model turns each message into a job card for a PM to review.</p>
+            </li>
+            <li class="step">
+              <h3>Prove</h3>
+              <p>Backed it with 560+ automated tests, Playwright end-to-end runs and a WCAG contrast check in CI, so accessibility can’t quietly regress.</p>
+            </li>
+            <li class="step">
+              <h3>Measure</h3>
+              <p>Put the KPIs on screen: a dashboard for pipeline, win rate and cash on hand, and a job cockpit with margin by store.</p>
+            </li>
+          </ol>
+
+          <figure class="board">
+            <button class="shot board__shot" type="button" id="boardButton"
+                    data-view="assets/board-light.png" data-title="The job board"
+                    data-desc="Ranked cards in store lanes, with aging and WIP signals, checklists, bulk actions, filters and inline detail.">
+              <img id="boardShot" src="assets/board-light.png" width="1760" height="1100"
+                   alt="Blueprint job board: grocery-construction jobs in To Do, In Progress, Review, Done and On Hold columns." />
+            </button>
+            <figcaption class="board__cap">
+              <span>The job board: ranked cards in store lanes, with filters and inline detail.</span>
+              <span class="seg" role="group" aria-label="Screenshot theme">
+                <button type="button" class="seg__btn" data-shot="light" aria-pressed="true">Light</button>
+                <button type="button" class="seg__btn" data-shot="dark" aria-pressed="false">Dark</button>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <ul class="gallery">
+          <li>
+            <button class="shot" type="button" data-view="assets/dashboard-light.png" data-title="Dashboard" data-desc="Pipeline, win rate and cash on hand at a glance, with charts themed for light and dark.">
+              <img src="assets/dashboard-light.png" width="1760" height="1100" loading="lazy" decoding="async" alt="Blueprint dashboard with pipeline and win-rate charts" />
+            </button>
+            <p>Dashboard: pipeline and win rate</p>
+          </li>
+          <li>
+            <button class="shot" type="button" data-view="assets/books-light.png" data-title="Books" data-desc="In-house double-entry accounting: ledger, receivables and payables, statements, bank reconciliation, job costing and fixed-asset depreciation.">
+              <img src="assets/books-light.png" width="1760" height="1100" loading="lazy" decoding="async" alt="Blueprint Books accounting module" />
+            </button>
+            <p>Books: double-entry accounting</p>
+          </li>
+          <li>
+            <button class="shot" type="button" data-view="assets/quotes-light.png" data-title="Quotes" data-desc="An estimate builder with labor and total toggles and one-click branded PDFs. Won quotes flow into invoices.">
+              <img src="assets/quotes-light.png" width="1760" height="1100" loading="lazy" decoding="async" alt="Blueprint quote builder" />
+            </button>
+            <p>Quotes: estimates and branded PDFs</p>
+          </li>
+          <li>
+            <button class="shot" type="button" data-view="assets/prospects-light.jpg" data-title="Prospects" data-desc="Warehouse leads built from OpenStreetMap and county parcel data, with owner, occupant and assessed value. No paid API.">
+              <img src="assets/prospects-light.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="Blueprint Prospects: warehouse leads with filters and charts" />
+            </button>
+            <p>Prospects: warehouse leads from public data</p>
+          </li>
+          <li>
+            <button class="shot" type="button" data-view="assets/forecast-light.jpg" data-title="Forecast" data-desc="A Monte Carlo revenue forecast over open quotes, running on hand-written WebAssembly at about twice the speed of the JavaScript version.">
+              <img src="assets/forecast-light.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="Blueprint Forecast: Monte Carlo revenue histogram" />
+            </button>
+            <p>Forecast: Monte Carlo revenue in WebAssembly</p>
+          </li>
+          <li>
+            <button class="shot" type="button" data-view="assets/jobs-light.jpg" data-title="Job cockpit" data-desc="Margin rolled up by store across every job.">
+              <img src="assets/jobs-light.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="Blueprint job cockpit with margin by store" />
+            </button>
+            <p>Job cockpit: margin by store</p>
+          </li>
+        </ul>
+
+        <div class="ios">
+          <div class="ios__text">
+            <h3>On iPhone</h3>
+            <p>A SwiftUI companion with the board, dashboard, quotes, prospects and search, offline edits, drag and drop, and a fastlane-to-TestFlight release pipeline.</p>
+          </div>
+          <ul class="phones">
+            <li><button class="shot phone" type="button" data-view="assets/ios-board.jpg" data-title="Board on iPhone" data-desc="The job board on iOS, with offline edits and drag and drop."><img src="assets/ios-board.jpg" width="607" height="1320" loading="lazy" decoding="async" alt="Blueprint iOS board" /></button></li>
+            <li><button class="shot phone" type="button" data-view="assets/ios-dashboard.jpg" data-title="Dashboard on iPhone" data-desc="Task and quote totals on iOS."><img src="assets/ios-dashboard.jpg" width="607" height="1320" loading="lazy" decoding="async" alt="Blueprint iOS dashboard" /></button></li>
+            <li><button class="shot phone" type="button" data-view="assets/ios-quotes.jpg" data-title="Quotes on iPhone" data-desc="The quotes list on iOS."><img src="assets/ios-quotes.jpg" width="607" height="1320" loading="lazy" decoding="async" alt="Blueprint iOS quotes" /></button></li>
+            <li><button class="shot phone" type="button" data-view="assets/ios-prospects.jpg" data-title="Prospects on iPhone" data-desc="Warehouse prospects on iOS."><img src="assets/ios-prospects.jpg" width="607" height="1320" loading="lazy" decoding="async" alt="Blueprint iOS prospects" /></button></li>
+            <li><button class="shot phone" type="button" data-view="assets/ios-comments.jpg" data-title="Task detail on iPhone" data-desc="Editing a task, with its comment thread."><img src="assets/ios-comments.jpg" width="607" height="1320" loading="lazy" decoding="async" alt="Blueprint iOS task with comments" /></button></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section xp" id="experience" aria-labelledby="xp-title">
+      <div class="wrap xp__grid">
+        <header class="sec-head xp__head">
+          <h2 id="xp-title">Experience</h2>
+          <p>Twelve years of business analysis, mostly in mortgage and title, from analyst to team lead to principal analyst on a $100B-a-year platform.</p>
+        </header>
+
+        <div class="xp__body">
+        <ol class="roles">
+          <li class="role">
+            <p class="role__when"><time datetime="2026">2026</time> – now</p>
+            <div class="role__body">
+              <h3>Independent consultant</h3>
+              <p class="role__org">Business analysis and software delivery, Clarkston, MI</p>
+              <ul>
+                <li>Mapped a construction contractor’s field processes into standard workflows, quote documents and job-cost KPIs, then designed and built <a href="#blueprint">Blueprint</a> to run them.</li>
+                <li>Built <a href="#ai">Lattice and Cadence</a>, local-first AI tools for model routing and meeting summaries.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="role">
+            <p class="role__when"><time datetime="2024-11">Nov 2024</time> – <time datetime="2026-01">Jan 2026</time></p>
+            <div class="role__body">
+              <h3>Business Analyst III</h3>
+              <p class="role__org">United Wholesale Mortgage, Pontiac, MI</p>
+              <ul>
+                <li>Wrote business requirements, functional specs and user stories with acceptance criteria, signed off by business and engineering before build.</li>
+                <li>Automated report generation in SQL from mortgage-loan data, lifting workflow efficiency 15%.</li>
+                <li>Gathered requirements for a workflow system that raised user engagement 25%.</li>
+                <li>Led UAT and built KPI reporting presented monthly to senior leadership.</li>
+                <li>Helped shape the architecture of an enterprise AI-chatbot integration in Python and SQL.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="role">
+            <p class="role__when"><time datetime="2022-11">Nov 2022</time> – <time datetime="2024-01">Jan 2024</time></p>
+            <div class="role__body">
+              <h3>Consultant</h3>
+              <p class="role__org">Neteffects, remote</p>
+              <ul>
+                <li>Retired a legacy data-orchestration tool, with dependency maps and cutover runbooks so downstream teams knew what changed and who owned it.</li>
+                <li>Validated gRPC message flows in Postman, halving response time and raising throughput 200%.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="role">
+            <p class="role__when"><time datetime="2020-01">Jan 2020</time> – <time datetime="2022-08">Aug 2022</time></p>
+            <div class="role__body">
+              <h3>Senior IT Business Analyst</h3>
+              <p class="role__org">Amrock (Rocket Companies), Detroit</p>
+              <ul>
+                <li>Principal analyst for moving a $100B-a-year loan-origination platform from WPF to cloud-native MS-SQL and Angular.</li>
+                <li>Mapped 1,000+ fields across 100M+ records with zero sync issues, and owned the migration test plan and go/no-go criteria.</li>
+                <li>Built CI/CD in Azure DevOps with Kubernetes and Docker; on call for production deploys and incidents.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="role">
+            <p class="role__when"><time datetime="2017-09">Sep 2017</time> – <time datetime="2020-01">Jan 2020</time></p>
+            <div class="role__body">
+              <h3>IT Team Leader and SAFe Scrum Master</h3>
+              <p class="role__org">Amrock (Rocket Companies), Detroit</p>
+              <ul>
+                <li>Led a special-project team that cut appraisal turn-time 95% with encrypted video.</li>
+                <li>Directed an SSO and cloud-native rollout on AWS and .NET that cut support tickets 60%.</li>
+                <li>Ran SAFe ceremonies and reported velocity, cycle time and ticket trends to IT leadership.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="role">
+            <p class="role__when"><time datetime="2013-05">May 2013</time> – <time datetime="2017-09">Sep 2017</time></p>
+            <div class="role__body">
+              <h3>IT Business Analyst</h3>
+              <p class="role__org">Amrock (Rocket Companies), Detroit</p>
+              <ul>
+                <li>Led UAT and process documentation for a CFPB compliance project.</li>
+                <li>Automated a check-refund process, saving about $1M in labor and three months.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+
+        <div class="edu">
+          <h3>Education</h3>
+          <ul>
+            <li><strong>Michigan State University</strong>, B.A. in Accounting and Information Systems, 2013</li>
+            <li><strong>Grand Circus</strong>, Full Stack .NET C# certificate, 2022</li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Applied AI -->
+    <section class="section ai" id="ai" aria-labelledby="ai-title">
+      <div class="wrap">
+        <header class="sec-head">
+          <h2 id="ai-title">Applied AI</h2>
+          <p>
+            In Blueprint, an OpenAI model reads flagged email and receipts onto job cards. At United Wholesale
+            Mortgage I helped shape an enterprise AI-chatbot integration. On my own hardware I build local-first
+            AI tools.
+          </p>
+        </header>
+
+        <div class="builds">
+          <article class="build">
+            <img src="assets/lattice.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="Lattice routing a chat to a local model, with tokens per second and VRAM telemetry" />
+            <h3>Lattice</h3>
+            <p class="build__what">A control plane for local AI models.</p>
+            <p>Routes each chat to a local model on Ollama or LM Studio and falls back to the cloud when the rig is down. Replies stream over server-sent events, tagged with the backend, tokens per second, time to first token and VRAM. Scheduled agents run saved prompts on a timer.</p>
+            <p class="build__stack">SvelteKit, TypeScript, OpenAI SDK, Ollama, Tailscale</p>
+            <p class="build__link"><a href="https://github.com/skiddo-dev/lattice" target="_blank" rel="noopener">Lattice on GitHub</a></p>
+          </article>
+          <article class="build">
+            <img src="assets/cadence.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="Cadence showing a summarized meeting with open action items" />
+            <h3>Cadence</h3>
+            <p class="build__what">Meeting notes that never leave the machine.</p>
+            <p>whisper.cpp transcribes the recording, then a local LLM writes the summary and pulls out action items for each person, with speaker segments and search.</p>
+            <p class="build__stack">SvelteKit, whisper.cpp, Ollama, SQLite</p>
+          </article>
+          <article class="build">
+            <img src="assets/timbre.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="Timbre music library with album art and a now-playing bar" />
+            <h3>Timbre</h3>
+            <p class="build__what">A self-hosted music player with a local model.</p>
+            <p>The model tags albums by genre and mood and answers plain-English requests, but it can only return tracks that are in the library, and everything falls back to plain rules when no model is running. Loudness leveling runs in hand-written WebAssembly.</p>
+            <p class="build__stack">SvelteKit, SQLite, Ollama, WebAssembly, Snapcast</p>
+            <p class="build__link"><a href="https://github.com/skiddo-dev/timbre" target="_blank" rel="noopener">Timbre on GitHub</a></p>
+          </article>
+        </div>
+
+        <p class="also">Also built: Hearth, a self-hosted personal-finance app whose accounts, budgets and net worth stay on my own network.</p>
+      </div>
+    </section>
+
+    <!-- Toolkit -->
+    <section class="section kit" id="toolkit" aria-labelledby="kit-title">
+      <div class="wrap">
+        <header class="sec-head">
+          <h2 id="kit-title">Toolkit</h2>
+        </header>
+        <div class="kit__grid">
+          <div class="kit__group">
+            <h3>Analysis</h3>
+            <ul>
+              <li>Requirements elicitation</li>
+              <li>BRDs and functional specs</li>
+              <li>User stories and acceptance criteria</li>
+              <li>Process mapping and SOPs</li>
+              <li>Data mapping</li>
+              <li>UAT and test planning</li>
+              <li>Root-cause analysis</li>
+              <li>SOWs and vendor support</li>
+            </ul>
+          </div>
+          <div class="kit__group">
+            <h3>Data and reporting</h3>
+            <ul>
+              <li>SQL (MS SQL)</li>
+              <li>Snowflake</li>
+              <li>Power BI</li>
+              <li>Excel: Power Query, XLOOKUP, VBA</li>
+              <li>Python</li>
+              <li>KPI and leadership reporting</li>
+            </ul>
+          </div>
+          <div class="kit__group">
+            <h3>Delivery</h3>
+            <ul>
+              <li>SAFe Scrum Master</li>
+              <li>Scrum and Kanban</li>
+              <li>Jira and Confluence</li>
+              <li>Azure DevOps</li>
+              <li>SharePoint</li>
+              <li>Production support and triage</li>
+            </ul>
+          </div>
+          <div class="kit__group">
+            <h3>Build</h3>
+            <ul>
+              <li>C# and .NET</li>
+              <li>TypeScript and SvelteKit</li>
+              <li>Angular and SwiftUI</li>
+              <li>REST, gRPC and OpenAPI</li>
+              <li>Entra ID SSO</li>
+              <li>Azure, Docker and Kubernetes</li>
+              <li>GitHub Actions and Playwright</li>
+            </ul>
+          </div>
+          <div class="kit__group">
+            <h3>AI</h3>
+            <ul>
+              <li>OpenAI API</li>
+              <li>Ollama and LM Studio</li>
+              <li>Local-to-cloud model routing</li>
+              <li>Token streaming over SSE</li>
+              <li>Email and document extraction</li>
+              <li>Speech to text with whisper.cpp</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design lab -->
+    <section class="section lab" id="lab" aria-labelledby="lab-title">
+      <div class="wrap">
+        <header class="sec-head">
+          <h2 id="lab-title">Design lab</h2>
+          <p>
+            One app, twelve design languages. Each is the entire Blueprint app, with the same routes and real data,
+            reskinned to push on motion, depth, type and platform CSS without touching its production design system.
+          </p>
+        </header>
+        <ul class="lab__grid">
+          <li><button class="shot" type="button" data-view="assets/exp-cobe.jpg" data-title="Cobe" data-desc="A hand-rolled WebGL globe that plots every store you touch as points of light, with no map library."><img src="assets/exp-cobe.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Cobe</span><span class="lab__kind">WebGL globe</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-glass.jpg" data-title="Glass" data-desc="Frosted panels floating on a living gradient, with spring micro-interactions and a glass command dock."><img src="assets/exp-glass.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Glass</span><span class="lab__kind">Glassmorphism</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-spatial.jpg" data-title="Spatial" data-desc="Native CSS 3D depth: the board, books, quotes and prospects float on a z-axis and tilt under your pointer."><img src="assets/exp-spatial.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Spatial</span><span class="lab__kind">CSS 3D</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-retro.jpg" data-title="Retro" data-desc="A synthwave sunset, a perspective neon grid, CRT scanlines and chrome HUD type."><img src="assets/exp-retro.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Retro</span><span class="lab__kind">Synthwave</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-maximalism.jpg" data-title="Maximalism" data-desc="A gilded salon: wine velvet, jewel terrazzo, gold-foil display serif and filigree frames."><img src="assets/exp-maximalism.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Maximalism</span><span class="lab__kind">Gilded salon</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-foxes.jpg" data-title="Foxes" data-desc="An editorial field fable: magazine typography chaptered like an issue, with a pixel-fox mascot keeping an eye on the yard."><img src="assets/exp-foxes.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Foxes</span><span class="lab__kind">Editorial</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-wasm-canvas.jpg" data-title="Render Lab" data-desc="Hand-written WebAssembly drawing Mandelbrot and Julia sets live to canvas, with a WebAssembly-versus-JavaScript benchmark."><img src="assets/exp-wasm-canvas.jpg" width="756" height="469" loading="lazy" decoding="async" alt="" /><span class="lab__name">Render Lab</span><span class="lab__kind">WebAssembly</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-lab.jpg" data-title="Lab" data-desc="Aurora layers, spatial depth and pointer-driven parallax: a calm, atmospheric take."><img src="assets/exp-lab.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Lab</span><span class="lab__kind">Ambient</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-brutal.jpg" data-title="Brutal" data-desc="Hard edges, raw monospace type and unapologetic contrast, productized into a usable six-page app."><img src="assets/exp-brutal.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Brutal</span><span class="lab__kind">Neobrutalism</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-pulse.jpg" data-title="Pulse" data-desc="A neon command rail with a radial warp overlay, full keyboard navigation and five swappable live palettes."><img src="assets/exp-pulse.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Pulse</span><span class="lab__kind">Command rail</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-neu.jpg" data-title="Neu" data-desc="Soft UI: one monochrome surface where depth comes only from paired light and dark shadows, and controls press in."><img src="assets/exp-neu.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Neu</span><span class="lab__kind">Neumorphism</span></button></li>
+          <li><button class="shot" type="button" data-view="assets/exp-platform.jpg" data-title="Platform" data-desc="The whole app rebuilt on native CSS: anchor positioning, native masonry, scroll-driven carousels and cross-document view transitions, with no JavaScript layout or animation libraries."><img src="assets/exp-platform.jpg" width="1760" height="1100" loading="lazy" decoding="async" alt="" /><span class="lab__name">Platform</span><span class="lab__kind">Native CSS</span></button></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <header class="sec-head">
+          <h2 id="contact-title">Get in touch</h2>
+          <p>I’m based in Clarkston, Michigan, and open to remote roles anywhere in the US, or hybrid and on-site roles around Metro Detroit. Email is the fastest way to reach me.</p>
+        </header>
+
+        <div class="resumes">
+          <a class="resume" href="Bob-Bice-Resume-BA.pdf" target="_blank" rel="noopener">
+            <span class="resume__title">Business analyst résumé</span>
+            <span class="resume__for">For senior BA, business systems analyst, technical BA and product owner roles.</span>
+            <span class="resume__file">PDF, 2 pages</span>
           </a>
-          <a class="btn btn-ghost btn-lg" href="https://www.linkedin.com/in/bob-bice/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM7 8.48H3V21h4V8.48Zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68Z"/></svg>
-            LinkedIn
-          </a>
-          <a class="btn btn-ghost btn-lg" href="https://github.com/skiddo-dev" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 5 18 5c.6 1.7.2 3 .1 3.3.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.3v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
-            GitHub
+          <a class="resume" href="Bob-Bice-Resume-AI.pdf" target="_blank" rel="noopener">
+            <span class="resume__title">AI engineer résumé</span>
+            <span class="resume__for">For LLM application, applied AI and AI enablement roles.</span>
+            <span class="resume__file">PDF, 2 pages</span>
           </a>
         </div>
+
+        <ul class="channels">
+          <li><a href="mailto:bob.c.bice@gmail.com">bob.c.bice@gmail.com</a></li>
+          <li><a href="https://www.linkedin.com/in/bob-bice/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/skiddo-dev" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
-      <span class="footer-brand">Bob&nbsp;Bice</span>
-      <nav class="footer-social" aria-label="Social">
-        <a href="https://www.linkedin.com/in/bob-bice/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM7 8.48H3V21h4V8.48Zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68Z"/></svg>
-        </a>
-        <a href="https://github.com/skiddo-dev" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 5 18 5c.6 1.7.2 3 .1 3.3.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.3v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>
-        </a>
-        <a href="mailto:bob.c.bice@gmail.com" aria-label="Email" title="Email">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
-        </a>
-      </nav>
-      <span class="footer-meta">Designed &amp; built end-to-end · echoing Blueprint's own design tokens</span>
-      <a class="footer-top" href="#top">Back to top ↑</a>
+    <div class="wrap footer__row">
+      <p>© 2026 Bob Bice</p>
+      <p>Set in Archivo. No frameworks, no trackers.</p>
+      <p><a href="#top">Back to top</a></p>
     </div>
   </footer>
 
-  <!-- ===================== LIGHTBOX ===================== -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
-    <button class="lb-close" id="lbClose" type="button" aria-label="Close preview">×</button>
-    <figure class="lb-figure">
-      <img id="lbImg" src="" alt="" />
-      <figcaption id="lbCap"><strong></strong><span></span></figcaption>
-    </figure>
-  </div>
+  <dialog class="viewer" id="viewer" aria-labelledby="viewerTitle">
+    <div class="viewer__inner">
+      <button class="viewer__close" type="button" aria-label="Close">×</button>
+      <img class="viewer__img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" />
+      <div class="viewer__text">
+        <h2 class="viewer__title" id="viewerTitle">Screenshot</h2>
+        <p class="viewer__desc"></p>
+      </div>
+    </div>
+  </dialog>
 
-  <script src="script.js?v=20260615"></script>
+  <script src="script.js?v=20261117"></script>
 </body>
 </html>

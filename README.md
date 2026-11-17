@@ -1,45 +1,46 @@
-# Bob Bice — Portfolio
+# bobbice.dev
 
-A standalone, zero-dependency portfolio site. Hybrid focus: leads with Bob as the
-maker, with a dedicated **Blueprint** product case study and a gallery of interface
-explorations. Visual language echoes Blueprint's own design tokens (indigo/slate,
-light + dark).
+Bob Bice's portfolio: a single static page served by GitHub Pages at [bobbice.dev](https://bobbice.dev).
+No build step, no framework, no trackers.
+
+## The idea
+
+The site reads like a working spec. Light mode is spec paper; dark mode is a cyanotype blueprint.
+Its one moving part is the results mapper: each row wires a business need to what was delivered and
+what it changed, the way a data-mapping tool wires source fields to targets.
+
+Type is a single variable family, Archivo (self-hosted, SIL Open Font License), where width
+encodes role: expanded for headings, regular for reading, condensed for numbers.
+
+## Files
 
 ```
-portfolio/
-├── index.html      # single-page site
-├── styles.css      # tokens + layout (light/dark via [data-theme])
-├── script.js       # theme toggle, scroll reveal, count-ups, board shot toggle, lightbox
-├── assets/         # product screenshots + exploration captures
-└── README.md
+index.html               the page
+styles.css               tokens (light + dark), layout and components, in cascade layers
+script.js                theme toggle, mapper wiring, screenshot viewer, section highlighting
+fonts/                   Archivo variable font (latin subset) and its license
+assets/                  product screenshots and design-lab captures
+og.png                   1200x630 social preview
+favicon.svg              the mark: two ports and a wire
+Bob-Bice-Resume-BA.pdf   senior business analyst résumé (linked from the page)
+Bob-Bice-Resume-AI.pdf   applied AI engineer résumé (linked from the page)
+Bob-Bice-Resume.pdf      earlier one-page résumé (kept so existing links keep working)
+CNAME                    custom domain for GitHub Pages
 ```
 
 ## Run locally
 
-It's plain static files — open `index.html` directly, or serve the folder:
-
 ```bash
-# from repo root
-python3 -m http.server 8777 --directory portfolio
-# → http://localhost:8777
+python3 -m http.server 8777
+# then open http://localhost:8777
 ```
 
-(There's also a `portfolio` entry in `.claude/launch.json` that does exactly this.)
+## Editing notes
 
-## Deploy (free options)
-
-No build step — point any static host at this folder.
-
-- **GitHub Pages** — push the repo and set Pages source to `/portfolio`, or copy the
-  folder to a `gh-pages` branch root.
-- **Netlify / Vercel / Cloudflare Pages** — drag-and-drop the `portfolio/` folder, or
-  connect the repo with publish directory `portfolio` and no build command.
-
-## Content notes
-
-- Screenshots live in `assets/` (copied from `docs/portfolio-assets/`). Swap them and
-  the captions in `index.html` to refresh.
-- Contact CTA points to `bob.c.bice@gmail.com` — update the `mailto:` link in
-  `index.html` if needed.
-- Honors `prefers-reduced-motion` and `prefers-color-scheme`; theme choice persists in
-  `localStorage` (`bb-theme`).
+- Mapper rows live in the `#mapper` table in `index.html`. Keep each row to a need, what was
+  delivered, where and when, and one measured result. The wires are drawn by `script.js` from the
+  rendered text positions, so rows can be added or removed without touching the script.
+- When `styles.css` or `script.js` changes, bump the `?v=` query on their links in `index.html` so
+  browsers don't serve a stale copy.
+- The page honors `prefers-reduced-motion` and `prefers-color-scheme`; a chosen theme persists in
+  `localStorage` under `bb-theme`.
